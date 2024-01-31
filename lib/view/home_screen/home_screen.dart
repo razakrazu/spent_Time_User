@@ -1,22 +1,21 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speat_time_user/controller/calect_datas.dart';
 import 'package:speat_time_user/view/booking_screen/room_details_screen.dart';
 
 
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
+   final CalectDatas userController = CalectDatas();
 final data = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten"
+    "Hotel",
+    "Apartment",
+    "Resort",
+    "villa",
+    "Home",
   ];
   @override
   Widget build(BuildContext context) {
@@ -69,7 +68,7 @@ const  SizedBox(height: 10,),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
-                    width: 100,
+                    width: 130,
                     decoration: BoxDecoration(
                       border: Border.all(width: 0),
                       borderRadius: BorderRadius.circular(10),
@@ -84,61 +83,91 @@ const  SizedBox(height: 10,),
         Container(
             height: 260,
             width: 200,
-            child: ListView.builder(
-                itemCount: 5,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    width: 320,    
-                    height: 200,               
-                    decoration: BoxDecoration(
-                      border: Border.all(width: 0),
-                      borderRadius: BorderRadius.circular(12),
-                       color: Color.fromARGB(255, 223, 223, 223),
-                    ),              
-                    margin: const EdgeInsets.all(5),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        
-                      Container(
-                        height: 170,
-                        width: 320,
-                        decoration:const BoxDecoration(
-                        image: DecorationImage(image:AssetImage('lib/assets/sdkdjsa.jpg',),
-                    
-
-                        fit: BoxFit.fill, ),
-                      
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
-                        ),                     
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10,right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: StreamBuilder(
+              stream: userController.getDatas(), 
+              builder:(context, AsyncSnapshot<QuerySnapshot>snapshot){
+         if(!snapshot.hasData){
+          return const CircularProgressIndicator();
+         }
+         
+              
+            return     ListView(
+              scrollDirection: Axis.horizontal,
+              children: snapshot.data!.docs.map((DocumentSnapshot document){
+                     Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+              String id = document.id;
+        return  GestureDetector(
+          onTap: (){
+             userController.deleteDataFromFirebase(id);
+                         print('$id');
+                        Get.to(
+                            RoomDetailScreen(
+                               adminId: id,
+                            ),
+                            arguments: data);
+          },
+        child: Container(
+                        width: 320,    
+                        height: 200,               
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 0),
+                          borderRadius: BorderRadius.circular(12),
+                           color: Color.fromARGB(255, 223, 223, 223),
+                        ),              
+                        margin: const EdgeInsets.all(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                                 const           Text('Name : Dream villa ',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),),
-                            IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border))
-                          ],
-                        ),
-                      ),
-                      
-                                const      Padding(
-                        padding:  EdgeInsets.only(left: 10,right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                        Text('Location :Palakkad',style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
-                          Text('Night/3000',style: TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
-                      
                             
-                          ],
-                        ),
+                          Container(
+                            height: 170,
+                            width: 320,
+                            decoration:const BoxDecoration(
+                            image: DecorationImage(image:AssetImage('lib/assets/sdkdjsa.jpg',),
+                        
+                                
+                            fit: BoxFit.fill, ),
+                          
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
+                            ),                     
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                  Text('Name :${data['propertyname']??''}',style:const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),),
+                                IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border))
+                              ],
+                            ),
+                          ),
+        
+        
+                          
+                                          Padding(
+                            padding:  EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                            Text('Location :${data['city']??''}',style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                              Text('Night/${data['propertyPrice']??''}''',style:const TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
+                          
+                                
+                              ],
+                            ),
+                          ),
+                        ],),
                       ),
-                    ],),
-                  );
-                })),
+        );
+              }).toList()
+                
+              
+                 );
+         } )),
+
+
+
 const  SizedBox(height: 10,),
   const      Padding(
           padding:  EdgeInsets.all(8.0),
@@ -211,66 +240,69 @@ const  SizedBox(height: 10,),
 
    GestureDetector(
 onTap: (){
-     Get.to(RoomDetailScreen());
    },
-     child: Container(
-              height: 220,
-              width: 220,
-              child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: 180,    
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 0),
-                        borderRadius: BorderRadius.circular(12),
-                         color: Color.fromARGB(255, 223, 223, 223),
-                      ),              
-                      margin: const EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+     child: GestureDetector(
+      onTap: (){
+      },
+       child: Container(
+                height: 220,
+                width: 220,
+                child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        width: 180,    
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 0),
+                          borderRadius: BorderRadius.circular(12),
+                           color: Color.fromARGB(255, 223, 223, 223),
+                        ),              
+                        margin: const EdgeInsets.all(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            
                           
-                        
-                        Container(
-                          height: 140,
-                          width: 320,
-                          decoration:const BoxDecoration(
-                          image: DecorationImage(image:AssetImage('lib/assets/sdkdjsa.jpg',),
-                                          
-                        
-                          fit: BoxFit.fill, ),
-                        
-                          borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
-                          ),                     
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10,right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                                   const Text('Rose villa',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,),),
-                              IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border)),
-                            ],
+                          Container(
+                            height: 140,
+                            width: 320,
+                            decoration:const BoxDecoration(
+                            image: DecorationImage(image:AssetImage('lib/assets/sdkdjsa.jpg',),
+                                            
+                          
+                            fit: BoxFit.fill, ),
+                          
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
+                            ),                     
                           ),
-                        ),
-                        
-                                  const      Padding(
-                          padding:  EdgeInsets.only(left: 10,right: 10),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          Text('Rose villa',style: TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
-                            Text('Night/3000',style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400),),
-                        
-                              
-                            ],
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                     const Text('Rose villa',style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600,),),
+                                IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border)),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],),
-                    );
-                  })),
+                          
+                                    const      Padding(
+                            padding:  EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                            Text('Rose villa',style: TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
+                              Text('Night/3000',style: TextStyle(fontSize: 11,fontWeight: FontWeight.w400),),
+                          
+                                
+                              ],
+                            ),
+                          ),
+                        ],),
+                      );
+                    })),
+     ),
    ),
                 const  SizedBox(height: 10,),
   const      Padding(
@@ -339,3 +371,5 @@ onTap: (){
     ],)),);
   }
 }
+
+

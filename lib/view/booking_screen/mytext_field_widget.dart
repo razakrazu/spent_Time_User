@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 
 class MyTextFormFieldWidget extends StatelessWidget {
   const MyTextFormFieldWidget({
-    super.key, this.hittext, this.Icon,
+    super.key, this.hittext, this.Icon,required this.controller,
   });
- final hittext;
- final Icon;
+final   controller;
+ final  hittext;
+ final   Icon;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-     width: 150,
-     height: 60,
+     width: 160,
+     height: 70,
       child: TextFormField(
-            
+         controller: controller,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),

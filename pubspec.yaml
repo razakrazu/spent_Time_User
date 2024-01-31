@@ -37,7 +37,23 @@ dependencies:
   cupertino_icons: ^1.0.6
   get: ^4.6.6
   table_calendar: ^3.0.9
- 
+  flutter_slidable: ^3.0.1
+  firebase_auth: ^4.16.0
+  font_awesome_flutter: ^10.6.0
+  google_sign_in: ^6.1.6
+  image_picker: ^1.0.4
+  firebase_storage: ^11.5.3
+  file_picker: ^4.0.10
+  path: ^1.8.3
+  webview_flutter: ^4.4.2
+  firebase_core: ^2.24.0
+  cloud_firestore: ^4.13.6 
+  url_launcher: ^6.0.14
+  cached_network_image: ^3.1.0
+  syncfusion_flutter_pdfviewer: ^20.4.44
+  firebase_database: ^10.1.2
+  flutter_date_pickers: ^0.4.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
