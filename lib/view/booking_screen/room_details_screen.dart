@@ -1,18 +1,23 @@
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speat_time_user/controller/calect_datas.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/booking_popup.dart';
+import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class RoomDetailScreen extends StatelessWidget {
-   RoomDetailScreen({super.key, required this.adminId});
-  final String adminId;
-
+   RoomDetailScreen({super.key, required this.id, required this.data});
+  final String id;
+final Map<String,dynamic>data;
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
-DateTime date =DateTime.now();
+CalectDatas auth = CalectDatas();
+// UserDatas userController = UserDatas();
 
     return Scaffold(
       body: SafeArea(
@@ -22,60 +27,71 @@ DateTime date =DateTime.now();
                 height: 300,
                 width: 480,
                 child: ListView.builder(
-                    itemCount: 5,
+                    itemCount: (data!['listImages'] as List<dynamic>).length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        width: 380,
-                        height: 300,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                              'lib/assets/sdkdjsa.jpg',
-                            ),
-
-                            // fit: BoxFit.fill,
+                        String imageUrl = data['listImages'][index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          width: 380,
+                          height: 300,
+                          decoration: const BoxDecoration(
+                            // image: DecorationImage(
+                            //   image: AssetImage(
+                            //     'lib/assets/sdkdjsa.jpg',
+                            //   ),
+                      
+                            //   // fit: BoxFit.fill,
+                            // ),
                           ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 160, left: 15, right: 15),
+                            child:   CachedNetworkImage(
+                          imageUrl: imageUrl,
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                          fit: BoxFit.cover,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 160, left: 15, right: 15),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: const Color.fromARGB(
-                                              255, 255, 255, 255)
-                                          .withOpacity(0.3)),
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.arrow_back,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                      size: 23,
-                                    ),
-                                  )),
-                              Container(
-                                  height: 40,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(100),
-                                      color: const Color.fromARGB(
-                                              255, 255, 255, 255)
-                                          .withOpacity(0.3)),
-                                  child: IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: const Color.fromARGB(255, 0, 0, 0),
-                                      size: 27,
-                                    ),
-                                  )),
-                            ],
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            //   children: [
+                            //     Container(
+                            //         height: 40,
+                            //         width: 40,
+                            //         decoration: BoxDecoration(
+                            //             borderRadius: BorderRadius.circular(100),
+                            //             color: const Color.fromARGB(
+                            //                     255, 255, 255, 255)
+                            //                 .withOpacity(0.3)),
+                            //         child: IconButton(
+                            //           onPressed: () {},
+                            //           icon: Icon(
+                            //             Icons.arrow_back,
+                            //             color: const Color.fromARGB(255, 0, 0, 0),
+                            //             size: 23,
+                            //           ),
+                            //         )),
+                            //     Container(
+                            //         height: 40,
+                            //         width: 40,
+                            //         decoration: BoxDecoration(
+                            //             borderRadius: BorderRadius.circular(100),
+                            //             color: const Color.fromARGB(
+                            //                     255, 255, 255, 255)
+                            //                 .withOpacity(0.3)),
+                            //         child: IconButton(
+                            //           onPressed: () {},
+                            //           icon: Icon(
+                            //             Icons.favorite_border,
+                            //             color: const Color.fromARGB(255, 0, 0, 0),
+                            //             size: 27,
+                            //           ),
+                            //         )),
+                            //   ],
+                            // ),
                           ),
                         ),
                       );
@@ -90,7 +106,7 @@ DateTime date =DateTime.now();
                       Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          '${data?['propertyname']}',
+                          '${data['propertyname']}',
                           style: const TextStyle(
                               fontSize: 25, fontWeight: FontWeight.w800),
                         ),
@@ -111,7 +127,7 @@ DateTime date =DateTime.now();
                                 size: 20,
                               ),
                               Text(
-                                '${data?['propertyPrice']}',
+                                '${data['propertyPrice']}',
                                 style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
@@ -125,7 +141,7 @@ DateTime date =DateTime.now();
                     children: [
                       Icon(Icons.location_on_outlined),
                       Text(
-                        ' ${data?['city']}, ${data?['state']}',
+                        ' ${data['city']}, ${data['state']}',
                         style: const TextStyle(
                             fontSize: 17, fontWeight: FontWeight.w500),
                       ),
@@ -163,7 +179,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 22),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.meeting_room_outlined,
-                          futuretext: '${data?['meetinghall']}',
+                          futuretext: '${data['meetinghall']}',
                         ),
                       ),
                       width30,
@@ -171,7 +187,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 20),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.local_parking,
-                          futuretext: '${data?['parking']}',
+                          futuretext: '${data['parking']}',
                         ),
                       ),
                       width30,
@@ -179,7 +195,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 15),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.flash_on_outlined,
-                          futuretext: '${data?['powerBackup']}',
+                          futuretext: '${data['powerBackup']}',
                         ),
                       ),
                       width30,
@@ -187,7 +203,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 20),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.pool,
-                          futuretext: '${data?['swimmingpool']}',
+                          futuretext: '${data['swimmingpool']}',
                         ),
                       ),
                     ],
@@ -199,7 +215,7 @@ DateTime date =DateTime.now();
                         padding: EdgeInsets.only(left: 20),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.lock_clock_outlined,
-                          futuretext: ' ${data?['goodsefty']}   ',
+                          futuretext: ' ${data['goodsefty']}   ',
                         ),
                       ),
                       width30,
@@ -207,7 +223,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 10),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.wifi,
-                          futuretext: '${data?['wifi']}',
+                          futuretext: '${data['wifi']}',
                         ),
                       ),
                       width30,
@@ -254,7 +270,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 20),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,
-                          futuretext: '${data?['Ac']}',
+                          futuretext: '${data['Ac']}',
                         ),
                       ),
                       width30,
@@ -262,7 +278,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 30),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.tv,
-                          futuretext: '${data?['tv']}',
+                          futuretext: '${data['tv']}',
                         ),
                       ),
                       width30,
@@ -270,7 +286,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 10),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.heat_pump_outlined,
-                          futuretext: 'Heater: ${data?['heater']}',
+                          futuretext: 'Heater: ${data['heater']}',
                         ),
                       ),
                       width30,
@@ -278,7 +294,7 @@ DateTime date =DateTime.now();
                         padding: const EdgeInsets.only(left: 5),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.wifi,
-                          futuretext: '${data?['wifi']}',
+                          futuretext: '${data['wifi']}',
                         ),
                       ),
                     ],
@@ -398,26 +414,36 @@ DateTime date =DateTime.now();
                 padding: const EdgeInsets.only(left: 10,right: 10)
                 ,
                 child: ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
+                    // final Map<String,dynamic>userData = await auth.getuserdata();
                     Get.to(
-                   BookingScreen()
+                   BookingScreen(data: data, clientId: id,
+                 
+                     
+                    
+                    ), 
                     );
                   },
-                  child: Text('Book now'),
+                  child: const  Text('Book now'),
                 ),
               ),
-            ),
+            ), 
             height20,
             SizedBox(
-              width: 20,
+              width: 50,
               child: Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10),
+                padding: const EdgeInsets.only(left: 10,right: 10)
+                ,
                 child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Pay'),
+                  onPressed: () async {
+                     Get.to(RazorpayScreeen());
+             
+                  },
+                  child: const  Text('Pay'),
                 ),
               ),
             ),
+        
           ],
         ),
       ),

@@ -11,13 +11,18 @@ import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
 
 
 class BookingScreen extends StatelessWidget {
-   UserDatas userController = UserDatas();
 
-   BookingScreen({super.key});
+   BookingScreen({super.key, required this.data, required this.clientId, 
+  
+     });
+     final clientId;
+final Map<String, dynamic> data;
 
   @override
   Widget build(BuildContext context) {
+       UserDatas userController = UserDatas();
     return Scaffold(
+      appBar: AppBar(title:Text('Booking Room',style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Color.fromARGB(255, 86, 120, 92),),
       body: Container(
           height: 900,
           width:500,
@@ -26,16 +31,52 @@ class BookingScreen extends StatelessWidget {
          
           ),
           child: Padding(
-            padding: const EdgeInsets.only(top: 35),
+            padding: const EdgeInsets.only(top: 405),
             child: Column(
+              
               children: [
             
                          Row(children: [
-                //  width20,
-                //     MyTextFormFieldWidget(hittext: 'Check In', Icon: Icon(Icons.key), controller: userController.checkin,),
-                //        width30,
-                //   MyTextFormFieldWidget(hittext: 'Check Out',Icon: Icon(Icons.lock),  controller: userController.checkout,),
-                  
+                 width20,
+                
+                           GestureDetector(
+onTap: (){
+    userController.chooseDateRangePicker();
+},
+                             child: Container(
+                                                     
+                               width: 160,
+                                height: 60,
+                             
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(10),
+                                 border: Border.all(width: 1)
+                               ),
+                               child:  Center(
+                                 child: Obx(
+                                               ()=> Text(DateFormat('dd-MM-yyyy',)
+                                               .format(userController.dateRnage.value.start)
+                                               .toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                                             ),
+                               ),),
+                           ),
+                                width30,
+ Container(
+                         
+   width: 160,
+    height: 60,
+                           
+   decoration: BoxDecoration(
+     borderRadius: BorderRadius.circular(10),
+     border: Border.all(width: 1)
+   ),
+   child:  Center(
+     child: Obx(
+                   ()=> Text(DateFormat('dd-MM-yyyy',)
+                   .format(userController.dateRnage.value.end)
+                   .toString(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                 ),
+   ),),                  
                 ],),
                 height20,
                        Row(children: [
@@ -45,33 +86,20 @@ class BookingScreen extends StatelessWidget {
                     MyTextFormFieldWidget(hittext: 'Guest',Icon: Icon(Icons.people), controller: userController.guest,),
                 ],),
                 height20,
-  Obx(
-                ()=> Text(DateFormat('dd-MM-yyyy')
-                .format(userController.dateRnage.value.start)
-                .toString(),),
-              ),
-
-  Obx(
-                ()=> Text(DateFormat('dd-MM-yyyy')
-                .format(userController.dateRnage.value.end)
-                .toString(),),
-              ),
+  
 
 
-ElevatedButton(onPressed: (){
-  userController.chooseDateRangePicker();
-}, child: Text('hello')),
                 Row(
                   children: [
                 width20,
                            Container(
                           
                              width: 160,
-                              height: 70,
+                              height: 60,
 
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(10),
-                               border: Border.all(width: 0)
+                               border: Border.all(width: 1)
                              ),
                              child: TextButton(onPressed: (){
                               Get.back();
@@ -79,12 +107,13 @@ ElevatedButton(onPressed: (){
                              width30,
                              Container(
                                width: 160,
-                              height: 70,
+                              height: 60,
                              decoration: BoxDecoration(
                                borderRadius: BorderRadius.circular(10),
-                               border: Border.all(width: 0)
+                               border: Border.all(width: 1)
                              ),
-                             child: TextButton(onPressed: () async{
+                             child: TextButton(onPressed: () 
+                             async{
           
           
                            final userInfo = BookingModel(
@@ -92,6 +121,14 @@ ElevatedButton(onPressed: (){
       checkOut: userController.dateRnage.value.end.toString(),
       roomCount: userController.roomcount.text,
       guests: userController.guest.text,
+       userId:data['UserId'],
+       roomId: data['adress'], 
+       propertyname: data['propertyname'],
+        city:  data['city'], 
+        propertyPrice:  data['propertyPrice'],
+         state:  data['state'], 
+         propertyImage: data['listImages'],
+         
     );
     
     try {
@@ -111,9 +148,7 @@ ElevatedButton(onPressed: (){
           .add(
             userInfo.toJson(),
           );
-    
-      // Navigate to home screen
-      // Get.offAllNamed('/home'); // Replace '/home' with your home screen route
+
     Get.back();
       Get.snackbar(
         'Success',
@@ -137,8 +172,22 @@ ElevatedButton(onPressed: (){
     }
     
                              }, child: Text('Apply'))),
+                             
                           
                 ],),
+                height30,
+           Container(
+                          
+                             width: 350,
+                              height: 50,
+
+                             decoration: BoxDecoration(
+                               borderRadius: BorderRadius.circular(10),
+                               border: Border.all(width: 1)
+                             ),
+                             child: TextButton(onPressed: (){
+                              Get.back();
+                             }, child: Text('Payment'))),
               ],
             ),
           )

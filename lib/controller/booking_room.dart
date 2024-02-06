@@ -1,4 +1,4 @@
-
+import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:speat_time_user/model/booking_room.dart';
 
 class UserDatas extends GetxController{
-
 
 
   final roomcount = TextEditingController();
@@ -32,31 +31,60 @@ if(picker != null && picker != dateRnage.value){
 }
 }
 
+
+
 var userdatas=RxList<BookingModel>();
 final dB = FirebaseAuth.instance;
 final Storage = FirebaseStorage.instance;
 
-Future<bool>bookingRoom(BookingModel bookingdata)async{
-  Map<String,dynamic>?bookingDataModel ={
-    'checkin':bookingdata.checkIn,
-     'checkout':bookingdata.checkOut,
-     'roomcount':bookingdata.roomCount,
-     'guest':bookingdata.guests
+Future<bool>userBooklingAddToFilrebase(String bookingdata,String roomId)async{
 
+   
+
+
+  
+  try{
+    await FirebaseFirestore.instance.collection('books').add({
+      'roomId':roomId,
+      'startDate':dateRnage.value.start,
+      'endDate':dateRnage.value.end,
+      'room':int.parse(roomcount.text),
+      'guestCount':int.parse(guest.text),
+    });
+  log('book details add to  Firebase');
+   
+    return true;
+
+  }catch(e){
+      log('Error adding book details');
+    return false;
+  }
+}
+         
+
+Future<bool>newBooking(BookingModel book) async{
+  Map<String,dynamic> bookinginfo ={
+
+
+    'CheckIn':book.checkIn,
+    'CheckOut':book.checkOut,
+    'gestCount':book.guests,
+    'roomCount':book.roomCount,
+    'userId':book.userId,
 
   };
   try{
     await FirebaseFirestore.instance
+    .collection('approvedRooms')
+    .doc(book.roomId)
     .collection('bookingDatas')
-    .doc()
-    .set(bookingDataModel);
-    return true;
+    .add(bookinginfo);
+  return true;
 
-  }catch(e){
-    return false;
-  }
+}catch (e) {
+
+return false;
 }
 
-
-
+}
 }
