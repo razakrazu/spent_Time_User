@@ -92,98 +92,95 @@ const  SizedBox(height: 10,),
                 if(!snapshot.hasData){
                   return CircularProgressIndicator();
                 }
-            return  Text('hello');
-// ListView.builder(
-//               scrollDirection: Axis.horizontal,
-//               itemCount: snapshot.data!.docs.length,
-//               itemBuilder: (context, index) {
-//                  DocumentSnapshot document = snapshot.data!.docs[index];
-//                         Map<String, dynamic> data =
-//                             document.data() as Map<String, dynamic>;
-//                         String id = document.id;
+                return  ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                 DocumentSnapshot document = snapshot.data!.docs[index];
+                        Map<String, dynamic> data =
+                            document.data() as Map<String, dynamic>;
+                        String id = document.id;
 
-//                   return GestureDetector(
-//                     onTap: (){
-//             //  userController.deleteDataFromFirebase(id);
-//                          print('$id');
-//                         Get.to(
-//                             RoomDetailScreen(
-//                                id: id,
-//                                data: data,
-//                             ),
-//                             arguments: data);
-//           },
-//           child: Container(
-//                         width: 320,    
-//                         height: 200,               
-//                         decoration: BoxDecoration(
-//                           border: Border.all(width: 0),
-//                           borderRadius: BorderRadius.circular(12),
-//                            color: Color.fromARGB(255, 223, 223, 223),
-//                         ),              
-//                         margin: const EdgeInsets.all(5),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
+                  return GestureDetector(
+                    onTap: (){
+            //  userController.deleteDataFromFirebase(id);
+                         print('$id');
+                        Get.to(
+                            RoomDetailScreen(
+                               id: id,
+                               data: data,
+                            ),
+                            arguments: data);
+          },
+          child: Container(
+                        width: 320,    
+                        height: 200,               
+                        decoration: BoxDecoration(
+                          border: Border.all(width: 0),
+                          borderRadius: BorderRadius.circular(12),
+                           color: Color.fromARGB(255, 223, 223, 223),
+                        ),              
+                        margin: const EdgeInsets.all(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             
-//                           Container(
-//                             height: 170,
-//                             width: 320,
-//                             decoration:const BoxDecoration(
-//                             // image: DecorationImage(image:AssetImage('lib/assets/sdkdjsa.jpg',),
-                        
-                                
-//                             // fit: BoxFit.fill, ),
+                          Container(
+                            height: 170,
+                            width: 320,
+                            decoration:const BoxDecoration(
+                            
                           
-//                             borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
-//                             ),   
-//                             child: CachedNetworkImage(
-//   imageUrl: (data['listImages'] as List<dynamic>).isNotEmpty ? data['listImages'][0] : '',
-//   // Other parameters...
-//   height: 100,
-//   width: 100,
-//   fit: BoxFit.cover,
-// ),                  
-//                           ),
-//                           Padding(
-//                             padding: const EdgeInsets.only(left: 10,right: 10),
-//                             child: Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                                   Text('Name :${data['propertyname']??''}',style:const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),),
-//                                 IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border))
-//                               ],
-//                             ),
-//                           ),
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(13),topRight:Radius.circular(13) ),
+                            ),   
+                            child: CachedNetworkImage(
+                              
+  imageUrl: (data['listImages'] as List<dynamic>).isNotEmpty ? data['listImages'][0] : '',
+  // Other parameters...
+  height: 100,
+  width: 100,
+  fit: BoxFit.cover,
+),                  
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                  Text('Name :${data['propertyname']??''}',style:const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,),),
+                                IconButton(onPressed: (){}, icon: const Icon(Icons.favorite_border))
+                              ],
+                            ),
+                          ),
         
         
                           
-//                                           Padding(
-//                             padding:  EdgeInsets.only(left: 10,right: 10),
-//                             child: Row(
-//                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                               children: [
-//                             Text('Location :${data['city']??''}',style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
-//                               Text('Night/${data['propertyPrice']??''}''',style:const TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
+                                          Padding(
+                            padding:  EdgeInsets.only(left: 10,right: 10),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                            Text('Location :${data['city']??''}',style: const TextStyle(fontSize: 16,fontWeight: FontWeight.w500),),
+                              Text('Night/${data['propertyPrice']??''}''',style:const TextStyle(fontSize: 13,fontWeight: FontWeight.w500),),
                           
                                 
-//                               ],
-//                             ),
-//                           ),
-//                         ],),
-//                       ),
-//         );
+                              ],
+                            ),
+                          ),
+                        ],),
+                      ),
+        );
 
-//         //       },
-//         //       children: snapshot.data!.docs.map((DocumentSnapshot document){
-//         //              Map<String, dynamic> data =
-//         //           document.data() as Map<String, dynamic>;
-//         //       String id = document.id;
-//         // return  
-//         //       }).toList()
+        //       },
+        //       children: snapshot.data!.docs.map((DocumentSnapshot document){
+        //              Map<String, dynamic> data =
+        //           document.data() as Map<String, dynamic>;
+        //       String id = document.id;
+        // return  
+        //       }).toList()
                 
-//               }
-//                  );
+              }
+                 );
               
               }
          

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:speat_time_user/controller/calect_datas.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/booking_popup.dart';
-import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -20,6 +19,14 @@ CalectDatas auth = CalectDatas();
 // UserDatas userController = UserDatas();
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Booking Room',
+          style: const TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(255, 86, 120, 92),
+      ),
       body: SafeArea(
         child: ListView(
           children: [
@@ -31,69 +38,25 @@ CalectDatas auth = CalectDatas();
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                         String imageUrl = data['listImages'][index];
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          width: 380,
-                          height: 300,
-                          decoration: const BoxDecoration(
-                            // image: DecorationImage(
-                            //   image: AssetImage(
-                            //     'lib/assets/sdkdjsa.jpg',
-                            //   ),
+                      return Container(
+                        width: 380,
+                        height: 300,
+                        decoration: const BoxDecoration(
+                          // image: DecorationImage(
+                          //   image: AssetImage(
+                          //     'lib/assets/sdkdjsa.jpg',
+                          //   ),
                       
-                            //   // fit: BoxFit.fill,
-                            // ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                bottom: 160, left: 15, right: 15),
-                            child:   CachedNetworkImage(
-                          imageUrl: imageUrl,
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => Icon(Icons.error),
-                          fit: BoxFit.cover,
+                          //   // fit: BoxFit.fill,
+                          // ),
                         ),
-                            // Row(
-                            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            //   children: [
-                            //     Container(
-                            //         height: 40,
-                            //         width: 40,
-                            //         decoration: BoxDecoration(
-                            //             borderRadius: BorderRadius.circular(100),
-                            //             color: const Color.fromARGB(
-                            //                     255, 255, 255, 255)
-                            //                 .withOpacity(0.3)),
-                            //         child: IconButton(
-                            //           onPressed: () {},
-                            //           icon: Icon(
-                            //             Icons.arrow_back,
-                            //             color: const Color.fromARGB(255, 0, 0, 0),
-                            //             size: 23,
-                            //           ),
-                            //         )),
-                            //     Container(
-                            //         height: 40,
-                            //         width: 40,
-                            //         decoration: BoxDecoration(
-                            //             borderRadius: BorderRadius.circular(100),
-                            //             color: const Color.fromARGB(
-                            //                     255, 255, 255, 255)
-                            //                 .withOpacity(0.3)),
-                            //         child: IconButton(
-                            //           onPressed: () {},
-                            //           icon: Icon(
-                            //             Icons.favorite_border,
-                            //             color: const Color.fromARGB(255, 0, 0, 0),
-                            //             size: 27,
-                            //           ),
-                            //         )),
-                            //   ],
-                            // ),
-                          ),
-                        ),
+                        child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                        fit: BoxFit.cover,
+                      ),
                       );
                     })),
             Padding(
@@ -424,25 +387,12 @@ CalectDatas auth = CalectDatas();
                     ), 
                     );
                   },
-                  child: const  Text('Book now'),
+                  child: const  Text('Book & Pay Now'),
                 ),
               ),
             ), 
             height20,
-            SizedBox(
-              width: 50,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10)
-                ,
-                child: ElevatedButton(
-                  onPressed: () async {
-                     Get.to(RazorpayScreeen());
-             
-                  },
-                  child: const  Text('Pay'),
-                ),
-              ),
-            ),
+            
         
           ],
         ),
