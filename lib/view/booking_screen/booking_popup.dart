@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_room.dart';
 import 'package:speat_time_user/core/constants.dart';
-import 'package:speat_time_user/model/booking_room.dart';
+import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
 import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 
@@ -146,8 +145,8 @@ class BookingScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               border: Border.all(width: 1)),
                           child: TextButton(
-                              onPressed: () async {
-                                final userInfo = BookingModel(
+                              onPressed: ()  {
+                                Get.to(BookingDetailsScreen(
                                   checkIn: userController.dateRnage.value.start
                                       .toString(),
                                   checkOut: userController.dateRnage.value.end
@@ -161,51 +160,51 @@ class BookingScreen extends StatelessWidget {
                                   propertyPrice: data['propertyPrice'],
                                   state: data['state'],
                                   propertyImage: data['listImages'],
-                                );
+                                 ) );
       
-                                try {
-                                  QuerySnapshot querySnapshot =
-                                      await FirebaseFirestore.instance
-                                          .collection('bookingDatas')
-                                          .where('checkin',
-                                              isEqualTo: userInfo.checkIn)
-                                          .get();
+                                // try {
+                                //   QuerySnapshot querySnapshot =
+                                //       await FirebaseFirestore.instance
+                                //           .collection('bookingDatas')
+                                //           .where('checkin',
+                                //               isEqualTo: userInfo.checkIn)
+                                //           .get();
       
-                                  if (querySnapshot.docs.isNotEmpty) {
-                                    Get.defaultDialog(
-                                      title: 'This Property Already Booked',
-                                      middleText:
-                                          'The property is already booked. Please choose a different one.',
-                                    );
-                                  } else {
-                                    await FirebaseFirestore.instance
-                                        .collection('bookingDatas')
-                                        .add(
-                                          userInfo.toJson(),
-                                        );
+                                //   if (querySnapshot.docs.isNotEmpty) {
+                                //     Get.defaultDialog(
+                                //       title: 'This Property Already Booked',
+                                //       middleText:
+                                //           'The property is already booked. Please choose a different one.',
+                                //     );
+                                //   } else {
+                                //     await FirebaseFirestore.instance
+                                //         .collection('bookingDatas')
+                                //         .add(
+                                //           userInfo.toJson(),
+                                //         );
       
-                                    Get.back();
-                                    Get.snackbar(
-                                      'Success',
-                                      'Your room has been booked',
-                                      snackPosition: SnackPosition.BOTTOM,
-                                      colorText: Colors.white,
-                                      backgroundColor:
-                                          const Color.fromARGB(255, 61, 138, 63),
-                                      borderColor: Colors.white,
-                                      borderWidth: 0,
-                                    );
-                                  }
-                                } catch (e) {
-                                  Get.snackbar(
-                                    'Fail',
-                                    'Failed to book your room. Please try again later.',
-                                    snackPosition: SnackPosition.BOTTOM,
-                                    colorText: Colors.white,
-                                    backgroundColor: Colors.red,
-                                    borderWidth: 0,
-                                  );
-                                }
+                                //     Get.back();
+                                //     Get.snackbar(
+                                //       'Success',
+                                //       'Your room has been booked',
+                                //       snackPosition: SnackPosition.BOTTOM,
+                                //       colorText: Colors.white,
+                                //       backgroundColor:
+                                //           const Color.fromARGB(255, 61, 138, 63),
+                                //       borderColor: Colors.white,
+                                //       borderWidth: 0,
+                                //     );
+                                //   }
+                                // } catch (e) {
+                                //   Get.snackbar(
+                                //     'Fail',
+                                //     'Failed to book your room. Please try again later.',
+                                //     snackPosition: SnackPosition.BOTTOM,
+                                //     colorText: Colors.white,
+                                //     backgroundColor: Colors.red,
+                                //     borderWidth: 0,
+                                //   );
+                                // }
                               },
                               child: const Text('Apply'))),
                     ],
