@@ -10,7 +10,7 @@ import 'package:speat_time_user/view/booking_screen/room_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
    HomeScreen({super.key});
-   final CalectDatas userController = CalectDatas();
+   final OwnerDatas userController = OwnerDatas();
 final data = [
     "Hotel",
     "Apartment",

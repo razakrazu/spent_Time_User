@@ -15,7 +15,7 @@ final Map<String,dynamic>data;
   @override
   Widget build(BuildContext context) {
     Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
-CalectDatas auth = CalectDatas();
+OwnerDatas auth = OwnerDatas();
 // UserDatas userController = UserDatas();
 
     return Scaffold(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_room.dart';
+import 'package:speat_time_user/controller/calect_datas.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
@@ -19,6 +20,7 @@ class BookingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OwnerDatas ownerController = OwnerDatas();
     UserDatas userController = UserDatas();
     return Scaffold(
       appBar: AppBar(
@@ -153,13 +155,11 @@ class BookingScreen extends StatelessWidget {
                                       .toString(),
                                   roomCount: userController.roomcount.text,
                                   guests: userController.guest.text,
-                                  userId: data['UserId'],
-                                  roomId: data['adress'],
-                                  propertyname: data['propertyname'],
-                                  city: data['city'],
-                                  propertyPrice: data['propertyPrice'],
-                                  state: data['state'],
-                                  propertyImage: data['listImages'],
+                                  userId: data['UserId'],                             
+                                  propertyname: data['propertyname'],               
+                                  propertyImage: data['listImages'], 
+                                  roomId: clientId, 
+                                  
                                  ) );
       
                                 // try {

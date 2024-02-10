@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CalectDatas extends GetxController{
+class OwnerDatas extends GetxController{
   
 final db = FirebaseFirestore.instance;
 

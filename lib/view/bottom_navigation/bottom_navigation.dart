@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:speat_time_user/view/booking_screen/room_details_screen.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
+import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 
 class BottomNavigation extends StatelessWidget {
@@ -29,13 +29,14 @@ class _BottomNavigationBarExampleState
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
-// RoomDetailScreen(id: id, data: data)
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
+ SingUpScreen(),
+ 
     Text(
       'Index 3: Settings',
+      style: optionStyle,
+    ),
+     Text(
+      'Index 4: Settings',
       style: optionStyle,
     ),
   ];
