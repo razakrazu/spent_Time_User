@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class MyTextFormField extends StatelessWidget {
   const MyTextFormField({
-    super.key,required this.labal,required this.icon,
+    super.key,required this.labal,required this.icon,required this.controller,
   });
  final String labal;
- final  IconData icon;
+ final  IconData icon; 
+ final controller;
  
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ class MyTextFormField extends StatelessWidget {
     
           // validator: validation,
     
-          // controller: onChanged,
+          controller: controller,
     
           // keyboardType: texttype,
     

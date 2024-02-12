@@ -4,7 +4,7 @@ import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation({super.key});
+  const BottomNavigation( {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +29,9 @@ class _BottomNavigationBarExampleState
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
- SingUpScreen(),
+  SingUpScreen(),
  
-    Text(
+  const    Text(
       'Index 3: Settings',
       style: optionStyle,
     ),
