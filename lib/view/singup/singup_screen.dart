@@ -1,53 +1,61 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:speat_time_user/controller/singup_controller.dart';
-import 'package:speat_time_user/model/singup_model.dart';
-import 'package:speat_time_user/view/bottom_navigation/bottom_navigation.dart';
-import 'package:speat_time_user/view/widgets/my_text_button.dart';
+import 'package:speat_time_user/controller/singup/authentication_repository.dart';
 import 'package:speat_time_user/view/widgets/my_text_form_field.dart';
 
+
+
+
+
+
 class SingUpScreen extends StatelessWidget {
+  //  AuthenticationRepository authController= Get.put(AuthenticationRepository());
+AuthenticationController authController= Get.put(AuthenticationController());
    SingUpScreen({super.key});
-  final  SingupData singupController = Get.put(SingupData());
+
   @override
   Widget build(BuildContext context) {
- 
     return Scaffold( body: SafeArea(
       child: Column(
         children: [
 Padding(
   padding: const EdgeInsets.all(10),
-  child:   MyTextFormField(labal: 'Enter Your Name', icon: Icons.person, controller: singupController.username,),
+  child:   MyTextFormField(labal: 'Enter Your Name', icon: Icons.person, controller:authController.username,),
 ),
 Padding(
   padding: const EdgeInsets.all(10),
-  child:   MyTextFormField(labal: 'Enter Your Email', icon: Icons.mail, controller: singupController.email,),
+  child:   MyTextFormField(labal: 'Enter Your Email', icon: Icons.mail, controller: authController.email,),
 ),
 Padding(
   padding: const EdgeInsets.all(10),
-  child:   MyTextFormField(labal: 'Enter Your Password', icon: Icons.lock, controller: singupController.password,),
+  child:   MyTextFormField(labal: 'Enter Your Password', icon: Icons.lock, controller: authController.password,),
 ),
 
 
-Padding(
-  padding: const EdgeInsets.all(10),
-  child:   MyTextButton(label: 'SingUp',
-   pressed: () async {
-     bool success = await singupController.addUser(
-                    SingupModel(
-                      name: singupController.username.text,
-                      mail: singupController.email.text,
-                       Password: singupController.password.text,
-                    ),
-                  );
+// Padding(
+//   padding: const EdgeInsets.all(10),
+//   child:   Obx(
+//     ()=> MyTextButton(  label:  authController.loading.value?CircularProgressIndicator(color: Colors.white,):'SingUp',
+//      pressed: () async {
+//   await  authController.singUp();
+//     },),
+//   ),
+// ),
+Row(
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+  InkWell(
+    onTap: () async {
+  await  authController.singUp();
+    },
+    child: SizedBox(
 
-                  if (success) {
-                    Get.to(BottomNavigation());
-                  } else {
-                    // Handle error
-                  }
-  },),
-)
+   child: authController.loading.value?CircularProgressIndicator(color: Colors.white,):  Text('submit')
+    ),
+  )
+],)
     ],)),);
   }
 }

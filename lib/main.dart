@@ -5,7 +5,7 @@ import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+ await Firebase.initializeApp( );
   runApp(const MyApp());
 }
 

@@ -4,8 +4,8 @@ import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 
 class BottomNavigation extends StatelessWidget {
-  const BottomNavigation( {super.key});
-
+   BottomNavigation( {super.key,});
+// final String usersId;
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -31,7 +31,7 @@ class _BottomNavigationBarExampleState
    HomeScreen(),
   SingUpScreen(),
  
-  const    Text(
+      Text(
       'Index 3: Settings',
       style: optionStyle,
     ),

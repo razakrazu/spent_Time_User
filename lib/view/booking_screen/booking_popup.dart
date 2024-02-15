@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_room.dart';
-import 'package:speat_time_user/controller/calect_datas.dart';
+import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';

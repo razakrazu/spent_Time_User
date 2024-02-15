@@ -1,18 +1,16 @@
+
 // import 'dart:developer';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:get/get.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
 
-
-// class UserController extends GetxController {
-
-
+// class SingupData extends GetxController{
 //   final db = FirebaseFirestore.instance;
   
 
 //   Stream<QuerySnapshot> getAccepted() {
 //     final CollectionReference accepted =
-//         FirebaseFirestore.instance.collection('approvedOne');
+//         FirebaseFirestore.instance.collection('approvedRooms');
 //     final acceptStream = accepted.snapshots();
 //     return acceptStream;
 //   }
@@ -20,7 +18,7 @@
 //   Future<List<String>> fetchProfileImageUrls() async {
 //     try {
 //       QuerySnapshot<Map<String, dynamic>> snapshot =
-//           await db.collection('approvedOne').get();
+//           await db.collection('approvedRooms').get();
 
 //       return snapshot.docs
 //           .where((document) => document.data().containsKey('profileImage'))
@@ -74,5 +72,6 @@
 //       }
 //     }
 //   }
+
 
 // }
