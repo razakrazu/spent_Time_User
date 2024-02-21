@@ -1,4 +1,5 @@
 
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,9 +15,9 @@ class RoomDetailScreen extends StatelessWidget {
 final Map<String,dynamic>data;
   @override
   Widget build(BuildContext context) {
-    Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
+    // Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
 OwnerDatas auth = OwnerDatas();
-// UserDatas userController = UserDatas();
+
 
     return Scaffold(
       appBar: AppBar(
@@ -34,7 +35,7 @@ OwnerDatas auth = OwnerDatas();
                 height: 300,
                 width: 480,
                 child: ListView.builder(
-                    itemCount: (data!['listImages'] as List<dynamic>).length,
+                    itemCount: (data['listImages'] as List<dynamic>).length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                         String imageUrl = data['listImages'][index];
@@ -378,14 +379,18 @@ OwnerDatas auth = OwnerDatas();
                 ,
                 child: ElevatedButton(
                   onPressed: () async {
-                    // final Map<String,dynamic>userData = await auth.getuserdata();
-                    Get.to(
-                   BookingScreen(data: data, clientId: id,
-                 
+             final Map<String,dynamic>userData = await auth.getuserdata();
                      
+                    Get.to(
+                   BookingScreen(
+                    userData: data,
+                    userId: id,
+                     propertyImages: data['listImages'],
+                      propertyname:  data['propertyname'],                       
                     
                     ), 
                     );
+           
                   },
                   child: const  Text('Book & Pay Now'),
                 ),

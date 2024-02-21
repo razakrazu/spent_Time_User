@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -39,10 +41,11 @@ final db = FirebaseFirestore.instance;
   
 
   Future getuserdata() async {
+
     SharedPreferences getuserId = await SharedPreferences.getInstance();
 
     final userId = getuserId.getString('getuser_id');
-
+log('$userId');
     if (userId != null) {
       final DocumentSnapshot userData = await FirebaseFirestore.instance
           .collection('users')

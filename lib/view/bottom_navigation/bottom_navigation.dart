@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/singup/singup_screen.dart';
 
@@ -29,8 +30,7 @@ class _BottomNavigationBarExampleState
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
-  SingUpScreen(),
- 
+BookingDetailsScreen(),
       Text(
       'Index 3: Settings',
       style: optionStyle,

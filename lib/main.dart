@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 Future<void> main() async {

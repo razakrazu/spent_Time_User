@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
-  const BookingDetailsScreen({
+   BookingDetailsScreen({
     super.key,
-   required propertyImage, 
-     required propertyname,
-     required roomId,
-      required String guests,
-      required String roomCount,
-      required String checkOut,
-      required String checkIn, required userId,
-    });
 
+    });
+BookingDetailsScreen getDataController= Get.put(BookingDetailsScreen());
+OwnerDatas RoomDataController =Get.put(OwnerDatas());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
