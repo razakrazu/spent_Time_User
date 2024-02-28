@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -56,16 +54,7 @@ class BookingScreen extends StatelessWidget {
                         fit: BoxFit.fill,
                       ),
                     ),
-//                                             child: CachedNetworkImage(
-                              
-//   imageUrl: (userData['listImages'] as List<dynamic>).isNotEmpty ? userData['listImages'][0] : '',
   
-//   // Other parameters...
-//   height: 100,
-//   width: 100,
-//   fit: BoxFit.cover,
-
-// ),   
   
      
                   ),
@@ -132,13 +121,13 @@ class BookingScreen extends StatelessWidget {
                     children: [
                       width20,
                       MyTextFormFieldWidget(
-                        hittext: 'Room',
+                        hinttext: 'Room',
                         Icon: const Icon(Icons.bed_outlined),
                         controller: userController.roomcount,
                       ),
                       width30,
                       MyTextFormFieldWidget(
-                        hittext: 'Guest',
+                        hinttext: 'Guest',
                         Icon: const Icon(Icons.people),
                         controller: userController.guest,
                       ),
@@ -177,8 +166,7 @@ class BookingScreen extends StatelessWidget {
                                   propertyImages: userData['listImages'],
                                   propertyname:userData['propertyname'],
                                 );
-                  // log('${userData['listImages']}');///
-                  // userData['listImages'];
+                
                   
 
                                 final responce = await userController

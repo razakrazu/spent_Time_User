@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/singup/singup_screen.dart';
+import 'package:speat_time_user/view/welcome/welcome_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       ),
          initialRoute: '/',
       getPages: [
-GetPage(name: '/', page: ()=>SingUpScreen())
+GetPage(name: '/', page: ()=>WelcomeScreen())
 // GetPage(name: '/', page: ()=>RoomDetailScreen(id: id, data: data,)),
 
 

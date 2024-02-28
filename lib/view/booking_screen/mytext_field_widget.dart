@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class MyTextFormFieldWidget extends StatelessWidget {
   const MyTextFormFieldWidget({
     super.key,
-    this.hittext,
+    this.hinttext,
     this.Icon,
     required this.controller,
   });
   final controller;
-  final hittext;
-  final Icon;
+  final  hinttext;
+  final  Icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +25,7 @@ class MyTextFormFieldWidget extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          hintText: hittext,
+          hintText: hinttext,
           hintStyle: const TextStyle(
             fontSize: 15,  
             color: Color.fromARGB(255, 90, 90, 90),

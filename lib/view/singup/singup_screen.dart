@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/controller/singup/authentication_repository.dart';
-import 'package:speat_time_user/view/bottom_navigation/bottom_navigation.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/widgets/my_text_form_field.dart';
 final TextEditingController username = TextEditingController();
@@ -11,7 +10,6 @@ final TextEditingController loginpassword = TextEditingController();
 final TextEditingController loginemail = TextEditingController();
 final TextEditingController restemail = TextEditingController();
 class SingUpScreen extends StatelessWidget {
-  //  AuthenticationRepository authController= Get.put(AuthenticationRepository());
 AuthenticationController authController= Get.put(AuthenticationController());
    SingUpScreen({super.key});
 
@@ -59,7 +57,7 @@ Row(
 
                       if (authController.user.value != null) {
                         print('created new account');
-                        Get.to(BottomNavigation());
+                        Get.to(HomeScreen());
                       }
     },
     child: SizedBox(

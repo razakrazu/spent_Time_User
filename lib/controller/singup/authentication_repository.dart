@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -5,62 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class AuthenticationController extends GetxController {
-// FirebaseAuth auth = FirebaseAuth.instance;
-// FirebaseFirestore dB = FirebaseFirestore.instance;
 
-// final TextEditingController username = TextEditingController();
-// final TextEditingController password = TextEditingController();
-// final TextEditingController email = TextEditingController();
-// final TextEditingController loginpassword = TextEditingController();
-// final TextEditingController loginemail = TextEditingController();
-// final TextEditingController restemail = TextEditingController();
-//  var loading = false.obs;
-
-
-
-// //  create account with email and password 
-
-// singUp()async{
-//   try{
-//     loading.value =true;
-//     await auth.createUserWithEmailAndPassword(email:email.text,password:password.text);
-//   await addUser();
-//   Get.to(BottomNavigation());
-//   loading.value =  false; 
-//   }catch(e){
-// Get.snackbar('error', '$e');
-// loading.value =false;
-//   }
-// }
-
-
-
-// addUser()async{
-// SingupModel user= SingupModel(
-//   name: username.text,
-//  email: auth.currentUser?.email, 
-//  password: password.text, 
-// //  userId: document.id
-//   );
-  
-//   await dB.collection('users')
-//   .doc(auth.currentUser?.uid)
-//   .collection('profile')
-//   .add(user.toMap());
-// }
-// singOut() async{
-//   await auth.signOut();
-// }
-
-// singIn()async{
-//   try{
-
-//  await auth.signInWithEmailAndPassword(email: loginemail.text, password: loginpassword.text);
-
-//   }catch(e){
-// Get.snackbar('error', '$e');
-//   }
-// }
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Rx<User?> user = Rx<User?>(null);
@@ -69,8 +16,7 @@ class AuthenticationController extends GetxController {
   void onInit() {
     user.bindStream(_auth.authStateChanges());
     super.onInit();
-  }
-
+  }                   
    Future<void> signUp({
     required String userName,
     required String email,
@@ -88,7 +34,7 @@ class AuthenticationController extends GetxController {
 
        SharedPreferences getuserId =  await SharedPreferences.getInstance();
         getuserId.setString('getuser_id', userId);
-  
+
       
       await FirebaseFirestore.instance.collection('users').doc(userId).set({
         'userId': userId,
@@ -97,8 +43,8 @@ class AuthenticationController extends GetxController {
         // 'phoneNumber': phoneNumber,
         'password':password,
       });
-      }
      
+      }
       user.value = userCredential.user;
     } catch (e) {
       print("Error in sign up: $e");

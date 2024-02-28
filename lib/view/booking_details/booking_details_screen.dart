@@ -4,10 +4,9 @@ import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
-   BookingDetailsScreen({
+  BookingDetailsScreen({
     super.key,
-
-    });
+  });
 BookingDetailsScreen getDataController= Get.put(BookingDetailsScreen());
 OwnerDatas RoomDataController =Get.put(OwnerDatas());
   @override
@@ -24,7 +23,6 @@ OwnerDatas RoomDataController =Get.put(OwnerDatas());
                decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 color: Color.fromARGB(255, 212, 212, 212),
-                
                ),
                child: Row(
                 children: [
@@ -32,7 +30,6 @@ Padding(
   padding: const EdgeInsets.all(8.0),
   child:   Container(
       height: 130,
-    
     width: 150,
      decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -43,7 +40,7 @@ image: DecorationImage(image: AssetImage('lib/assets/djffjdjda.jpg'),
   ),
 ),
 
-Padding(
+                              Padding(
   padding: const EdgeInsets.only(left: 20,top: 20),
   child:   Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,4 +65,3 @@ Padding(
     );
   }
 }
-

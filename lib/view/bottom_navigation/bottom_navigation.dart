@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
-import 'package:speat_time_user/view/singup/singup_screen.dart';
 
 
-class BottomNavigation extends StatelessWidget {
-   BottomNavigation( {super.key,});
-// final String usersId;
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: BottomNavigationBarExample(),
-    );
-  }
-}
 
 class BottomNavigationBarExample extends StatefulWidget {
   const BottomNavigationBarExample({super.key});
@@ -61,26 +50,26 @@ BookingDetailsScreen(),
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.red,
+            backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Business',
-            backgroundColor: Colors.green,
+            backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             label: 'School',
-            backgroundColor: Colors.purple,
+            backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
-            backgroundColor: Colors.pink,
+            backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Color.fromARGB(255, 170, 231, 255),
         onTap: _onItemTapped,
       ),
     );
