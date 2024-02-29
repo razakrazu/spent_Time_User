@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:speat_time_user/core/color.dart';
-import 'package:speat_time_user/core/constants.dart';
+import 'package:speat_time_user/view/singup/singup_screen.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -11,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image(image: AssetImage('lib/assets/roberto-nickson-so3wgJLwDxo-unsplash.jpg'),fit: BoxFit.cover,
+      const    Image(image: AssetImage('lib/assets/roberto-nickson-so3wgJLwDxo-unsplash.jpg'),fit: BoxFit.cover,
           width:  double.infinity,
           height: double.infinity,
         ),
@@ -35,31 +36,34 @@ Padding(
                         child: Container(
                           height: 60,
                           width: 190,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 155, 155, 155),
+                          decoration:const BoxDecoration(
+                            color:  Color.fromARGB(255, 155, 155, 155),
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30)
                                       
                           )
                           ),
-                          child: Center(child: MyTextWidgets(title: 'LogIn', fontsize: 30, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
+                          child:const Center(child: MyTextWidgets(title: 'LogIn', fontsize: 22, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
                         ),
                       ),
                       
                         Flexible(
                           flex: 13,
-                          child: Container(
-                               height: 60,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 155, 155, 155),
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(30)
-                                        
-                          )
+                          child: GestureDetector(
+                            onTap: () => Get.to(SingUpScreen()),
+                            child: Container(
+                                 height: 60,
+                            width: 190,
+                            decoration:const BoxDecoration(
+                              color:  Color.fromARGB(255, 155, 155, 155),
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(30)
+                                          
+                            )
+                            ),
+                            child:const Center(child: MyTextWidgets(title: 'SingUp', fontsize:22, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
+                                                ),
                           ),
-                          child: Center(child: MyTextWidgets(title: 'SingUp', fontsize:30, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
-                                              ),
                         ),
                     ],
                   ),
