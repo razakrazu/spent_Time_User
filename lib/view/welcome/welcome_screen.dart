@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/core/color.dart';
+import 'package:speat_time_user/view/login_screen/login_screen.dart';
 import 'package:speat_time_user/view/singup/singup_screen.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -33,17 +34,20 @@ Padding(
                     children: [
                       Flexible(
                         flex: 13,
-                        child: Container(
-                          height: 60,
-                          width: 190,
-                          decoration:const BoxDecoration(
-                            color:  Color.fromARGB(255, 155, 155, 155),
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30)
-                                      
-                          )
+                        child: GestureDetector(
+                              onTap: () => Get.to(LoginScreen()),
+                          child: Container(
+                            height: 60,
+                            width: 190,
+                            decoration:const BoxDecoration(
+                              color:  Color.fromARGB(255, 155, 155, 155),
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30)
+                                        
+                            )
+                            ),
+                            child:const Center(child: MyTextWidgets(title: 'LogIn', fontsize: 22, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
                           ),
-                          child:const Center(child: MyTextWidgets(title: 'LogIn', fontsize: 22, fontwidget: FontWeight.w400, fontcolor: whiteColor)),
                         ),
                       ),
                       
