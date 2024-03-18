@@ -2,12 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speat_time_user/controller/singup/authentication_repository.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/view/booking_screen/room_details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key, this.userId});
   final OwnerDatas userController = OwnerDatas();
+  final AuthenticationController signupController = AuthenticationController();
   final userId;
   final data = [
     "Hotel",
@@ -27,7 +29,9 @@ class HomeScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(onPressed: () {}, icon: Icon(Icons.notes)),
+                IconButton(onPressed: () {
+              // signupController.signOut();
+                }, icon: Icon(Icons.notes)),
                 CircleAvatar(),
               ],
             ),
@@ -111,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                               Get.to(
                                   RoomDetailScreen(
                                     id: id,
-                                    data: data,
+                                    data: data, bookingId: '',
                                   ),
                                   arguments: data);
                             },
@@ -308,7 +312,7 @@ class HomeScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(width: 0),
                             borderRadius: BorderRadius.circular(12),
-                            color: Color.fromARGB(255, 223, 223, 223),
+                            color:const Color.fromARGB(255, 223, 223, 223),
                           ),
                           margin: const EdgeInsets.all(5),
                           child: Column(
@@ -345,7 +349,7 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     IconButton(
                                         onPressed: () {},
-                                        icon: Icon(Icons.favorite_border)),
+                                        icon:const Icon(Icons.favorite_border)),
                                   ],
                                 ),
                               ),
@@ -398,7 +402,7 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(width: 0),
                         borderRadius: BorderRadius.circular(12),
-                        color: Color.fromARGB(255, 223, 223, 223),
+                        color:const Color.fromARGB(255, 223, 223, 223),
                       ),
                       margin: const EdgeInsets.all(5),
                       child: Column(
@@ -433,7 +437,7 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 IconButton(
                                     onPressed: () {},
-                                    icon: Icon(Icons.favorite_border)),
+                                    icon:const Icon(Icons.favorite_border)),
                               ],
                             ),
                           ),

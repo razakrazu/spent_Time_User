@@ -5,16 +5,18 @@ class MyTextFormField extends StatelessWidget {
     super.key,
     required this.labal,
     required this.icon,
-    this.controller,
+    this.controller, 
+    this.validation,
   });
   final String labal;
   final IconData icon;
   final controller;
+  final validation;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // validator: validation,
+      validator: validation,
 
       controller: controller,
 

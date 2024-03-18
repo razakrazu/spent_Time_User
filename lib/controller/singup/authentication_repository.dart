@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -19,15 +18,17 @@ class AuthenticationController extends GetxController {
   }                   
    Future<void> signUp({
     required String userName,
-    required String email,
-    // required String phoneNumber,
+    required String email,   
     required String password,
+
   }) async {
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
+        
       );
+
       if (userCredential.user != null) {
 
       String userId = userCredential.user!.uid;
@@ -40,7 +41,6 @@ class AuthenticationController extends GetxController {
         'userId': userId,
         'userName': userName,
         'email': email,
-        // 'phoneNumber': phoneNumber,
         'password':password,
       });
      

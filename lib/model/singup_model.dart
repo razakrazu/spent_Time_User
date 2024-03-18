@@ -1,9 +1,8 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SingupModel{
  final String name;
- final String? email;
+ final String email;
  final String  password;
  final String? userId;
  
@@ -21,10 +20,9 @@ class SingupModel{
   userId: singDatas.id);
 
  }
- 
  Map<String,dynamic>toMap(){
   return {
-    // 'userId':userId,
+    // 'userId':userId, 
     'email':email,
     'password':password,
     'name':name

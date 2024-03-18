@@ -8,9 +8,10 @@ import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class RoomDetailScreen extends StatelessWidget {
-   RoomDetailScreen({super.key, required this.id, required this.data});
+   RoomDetailScreen({super.key, required this.id, required this.data,required this.bookingId});
   final String id;
 final Map<String,dynamic>data;
+final bookingId;
   @override
   Widget build(BuildContext context) {
     // Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
@@ -381,10 +382,11 @@ OwnerDatas auth = OwnerDatas();
                      
                     Get.to(
                    BookingScreen(
-                    userData: data,
+                    userData: userData,
                     userId: id,
                      propertyImages: data['listImages'],
-                      propertyname:  data['propertyname'],                       
+                      propertyname:  data['propertyname'],
+                      //  bookingId:bookingId ,                       
                     
                     ), 
                     );

@@ -18,8 +18,8 @@ class BookingScreen extends StatelessWidget {
   });
   final String userId;
   final Map<String, dynamic> userData;
-  var propertyImages;
-  var propertyname;
+  final List propertyImages;
+  final String  propertyname;
   @override
   Widget build(BuildContext context) {
     UserDatas userController = UserDatas();
@@ -162,16 +162,16 @@ class BookingScreen extends StatelessWidget {
                     checkOut: userController.dateRnage.value.end.toString(),
                     roomCount: userController.roomcount.text,
                     guest: userController.guest.text,
-                                 roomId: userId,
+                                 roomId:userId,
                                   propertyImages: userData['listImages'],
-                                  propertyname:userData['propertyname'],
+                                  propertyname:userData['propertyname'], 
+                                  // userId: userData['userId'] ,
                                 );
                 
                   
 
-                                final responce = await userController
+                                 await userController
                                     .newBooking(bookingDatas);
-                                // log('$responce');
                               },
                               child: const Text('Apply'))),
                     ],

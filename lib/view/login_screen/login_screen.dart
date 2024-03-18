@@ -36,8 +36,8 @@ class LoginScreen extends StatelessWidget {
             child: ListView(
               children: [
                 height50,
-                Center(
-                  child: const MyTextWidgets(
+        const        Center(
+                  child:  MyTextWidgets(
                       title: 'Welcome',
                       fontsize: 30,
                       fontwidget: FontWeight.bold,

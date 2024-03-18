@@ -80,7 +80,7 @@ Future<bool>newBooking(BookingModel book) async{
 }
 Future<bool> userBooking(BookingModel book) async {
     Map<String, dynamic> bookinfo = {
-   'checkin':book.checkIn,
+'checkin':book.checkIn,
 'checkout':book.checkOut,
 'roomcount':book.roomCount,
 'guest':book.guest,
