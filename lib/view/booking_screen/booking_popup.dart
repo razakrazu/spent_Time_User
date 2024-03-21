@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -12,18 +14,21 @@ class BookingScreen extends StatelessWidget {
   BookingScreen({
     super.key,
     required this.userData,
-    required this.userId,
-    required this.propertyImages,
-    required this.propertyname,
+    required this.userId,required this.bookingId,
+    required this.propertyImages,required this.propertyname
+ 
   });
   final String userId;
   final Map<String, dynamic> userData;
-  final List propertyImages;
-  final String  propertyname;
+  // final Map<String,dynamic> data;
+  final bookingId;
+ final List propertyImages;
+  final String propertyname;
   @override
   Widget build(BuildContext context) {
     UserDatas userController = UserDatas();
-    
+      
+log('$propertyImages');
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -48,7 +53,7 @@ class BookingScreen extends StatelessWidget {
                   Container(
                     height: 250,
                     width: 350,
-                    decoration: BoxDecoration(
+                    decoration:const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage('lib/assets/new add room.jpg'),
                         fit: BoxFit.fill,
@@ -157,21 +162,31 @@ class BookingScreen extends StatelessWidget {
                               border: Border.all(width: 1)),
                           child: TextButton(
                               onPressed: () async {
+
                                 final bookingDatas = BookingModel(
                       checkIn: userController.dateRnage.value.start.toString(), 
                     checkOut: userController.dateRnage.value.end.toString(),
                     roomCount: userController.roomcount.text,
                     guest: userController.guest.text,
                                  roomId:userId,
-                                  propertyImages: userData['listImages'],
-                                  propertyname:userData['propertyname'], 
-                                  // userId: userData['userId'] ,
+                                  propertyImages: propertyImages,
+                                  propertyname:propertyname, 
+                                  userId: userData['userId'] ,
                                 );
                 
                   
 
-                                 await userController
+                             final respons =    await userController
                                     .newBooking(bookingDatas);
+                                   
+ if (respons) {
+                  Get.snackbar('success', 'Your table is reserved',
+                      backgroundColor: Colors.green);
+                } else {
+                  Get.snackbar('failed', 'Check your internet connection',
+                      backgroundColor: Colors.red);
+                }
+                                    
                               },
                               child: const Text('Apply'))),
                     ],

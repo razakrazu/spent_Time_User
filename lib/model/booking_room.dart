@@ -10,7 +10,7 @@ final List propertyImages;
 
   BookingModel( {
   required this.propertyname,
-  this.userId,
+ required this.userId,
   required this.checkIn,
   required this.checkOut,
   required this.roomCount,

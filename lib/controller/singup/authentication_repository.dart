@@ -1,14 +1,16 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 class AuthenticationController extends GetxController {
 
+TextEditingController passwordController= TextEditingController();
+TextEditingController emailController = TextEditingController();
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
   Rx<User?> user = Rx<User?>(null);
 
   @override
@@ -24,12 +26,13 @@ class AuthenticationController extends GetxController {
   }) async {
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: email.trim(),
+        password: password.trim(),
         
       );
 
       if (userCredential.user != null) {
+
 
       String userId = userCredential.user!.uid;
 
@@ -40,10 +43,9 @@ class AuthenticationController extends GetxController {
       await FirebaseFirestore.instance.collection('users').doc(userId).set({
         'userId': userId,
         'userName': userName,
-        'email': email,
+        'email': email,      
         'password':password,
       });
-     
       }
       user.value = userCredential.user;
     } catch (e) {

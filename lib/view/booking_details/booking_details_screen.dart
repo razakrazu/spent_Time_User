@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:speat_time_user/controller/booking_details.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -7,7 +8,7 @@ class BookingDetailsScreen extends StatelessWidget {
   BookingDetailsScreen({
     super.key,
   });
-BookingDetailsScreen getDataController= Get.put(BookingDetailsScreen());
+RoomsBookingDatas getDataController= Get.put(RoomsBookingDatas());
 OwnerDatas RoomDataController =Get.put(OwnerDatas());
   @override
   Widget build(BuildContext context) {

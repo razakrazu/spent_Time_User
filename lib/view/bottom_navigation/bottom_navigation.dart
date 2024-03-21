@@ -19,7 +19,7 @@ class _BottomNavigationBarExampleState
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static  List<Widget> _widgetOptions = <Widget>[
    HomeScreen(),
-BookingDetailsScreen(),
+   BookingDetailsScreen(),
       Text(
       'Index 3: Settings',
       style: optionStyle,

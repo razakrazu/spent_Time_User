@@ -1,12 +1,10 @@
 import 'dart:developer';
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/controller/singup/authentication_repository.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
-import 'package:speat_time_user/view/home_screen/home_screen.dart';
+import 'package:speat_time_user/view/bottom_navigation/bottom_navigation.dart';
 import 'package:speat_time_user/view/login_screen/login_screen.dart';
 import 'package:speat_time_user/view/widgets/button.dart';
 import 'package:speat_time_user/view/widgets/my_text_button.dart';
@@ -153,23 +151,21 @@ class SingUpScreen extends StatelessWidget {
                         backgroundcolor: const Color.fromARGB(255, 153, 209, 255),
                         onaction:  () async {
                           if(signKey.currentState!.validate()){
+                
   await authController.signUp(
-                          userName: username.text,
-                          email: email.text,
-                          password: password.text,
+                          userName: username.text.trim(),
+                          email: email.text.trim(),
+                          password: password.toString(),
               
                         );
-                          }
-             
-                              // log('${password.text}');
-              
-                
-                    // log('${authController.user.value}');
-                        if (authController.user.value != null) {
-                    
-                        Get.to(HomeScreen()); 
+                             if (authController.user.value != null) {
+                   
+                        Get.to( const  BottomNavigationBarExample()); 
                           
                 }
+                          }
+             
+                   
               },
               
                         buttonhight: 50,

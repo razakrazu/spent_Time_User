@@ -1,7 +1,12 @@
+import 'dart:math';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/controller/singup/authentication_repository.dart';
+import 'package:speat_time_user/view/bottom_navigation/bottom_navigation.dart';
+import 'package:speat_time_user/view/home_screen/home_screen.dart';
+import 'package:speat_time_user/view/splash.dart';
 import 'package:speat_time_user/view/welcome/welcome_screen.dart';
 
 Future<void> main() async {
@@ -15,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   final  AuthenticationController  AuthController = AuthenticationController();
+   final  AuthenticationController  authController = AuthenticationController();
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
@@ -26,9 +31,11 @@ class MyApp extends StatelessWidget {
       ),
          initialRoute: '/',
       getPages: [
-        // AuthController.user.value==null?
+        
+   authController.user.value==null?
         GetPage(name: '/', page: ()=>WelcomeScreen())
-// :GetPage(name: '/', page: ()=>HomeScreen())
+        :GetPage(name: '/', page: ()=> BottomNavigationBarExample()),
+
        
 
        

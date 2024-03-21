@@ -80,7 +80,7 @@ class RoomsBookingDatas extends GetxController{
       await FirebaseFirestore.instance
           .collection('approvedOne')
           .doc(book.userId)
-          
+        
           .collection('bookings')
           .doc(bookingId).update(bookinfo);
           log('$userId');

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,24 +9,26 @@ import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class RoomDetailScreen extends StatelessWidget {
-   RoomDetailScreen({super.key, required this.id, required this.data,required this.bookingId});
+   RoomDetailScreen({super.key, required this.id, required this.data,required this.bookingId,});
   final String id;
 final Map<String,dynamic>data;
 final bookingId;
+
   @override
   Widget build(BuildContext context) {
     // Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
 OwnerDatas auth = OwnerDatas();
 
 
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title:const Text(
           'Booking Room',
-          style: const TextStyle(color: Colors.white),
+          style:  TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 86, 120, 92),
+        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
       ),
       body: SafeArea(
         child: ListView(
@@ -379,18 +382,21 @@ OwnerDatas auth = OwnerDatas();
                 child: ElevatedButton(
                   onPressed: () async {
              final Map<String,dynamic>userData = await auth.getuserdata();
-                     
+                     log('$userData');
                     Get.to(
                    BookingScreen(
                     userData: userData,
-                    userId: id,
-                     propertyImages: data['listImages'],
-                      propertyname:  data['propertyname'],
+                    userId: id ,
+                    bookingId: bookingId, propertyImages: data['listImages'], propertyname: data['propertyname'],
+                    
+                     
+                      
                       //  bookingId:bookingId ,                       
                     
-                    ), 
+                    ),
+                     
                     );
-           
+
                   },
                   child: const  Text('Book & Pay Now'),
                 ),

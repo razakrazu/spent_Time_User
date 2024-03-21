@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(onPressed: () {
-              // signupController.signOut();
+              signupController.signOut();
                 }, icon: Icon(Icons.notes)),
                 CircleAvatar(),
               ],
@@ -111,13 +113,15 @@ class HomeScreen extends StatelessWidget {
 
                           return GestureDetector(
                             onTap: () {
-                              print('$id');
+                          
+
                               Get.to(
                                   RoomDetailScreen(
                                     id: id,
-                                    data: data, bookingId: '',
+                                    data: data,
+                                     bookingId: '',
                                   ),
-                                  arguments: data);
+                                 );
                             },
                             child: Container(
                               width: 320,
