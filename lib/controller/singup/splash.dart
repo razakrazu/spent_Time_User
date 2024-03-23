@@ -1,7 +1,6 @@
 
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:speat_time_user/view/bottom_navigation/bottom_navigation.dart';
 import 'package:speat_time_user/view/welcome/welcome_screen.dart';
 
 class SplashController extends GetxController{

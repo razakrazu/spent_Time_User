@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,23 +8,25 @@ import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class RoomDetailScreen extends StatelessWidget {
-   RoomDetailScreen({super.key, required this.id, required this.data,required this.bookingId,});
+  RoomDetailScreen({
+    super.key,
+    required this.id,
+    required this.data,
+    required this.bookingId,
+  });
   final String id;
-final Map<String,dynamic>data;
-final bookingId;
+  final Map<String, dynamic> data;
+  final String bookingId;
 
   @override
   Widget build(BuildContext context) {
-    // Map<String, dynamic>? data = Get.arguments as Map<String, dynamic>?;
-OwnerDatas auth = OwnerDatas();
-
-
+    OwnerDatas auth = OwnerDatas();
 
     return Scaffold(
       appBar: AppBar(
-        title:const Text(
+        title: const Text(
           'Booking Room',
-          style:  TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 86, 120, 92),
@@ -40,26 +41,27 @@ OwnerDatas auth = OwnerDatas();
                     itemCount: (data['listImages'] as List<dynamic>).length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
-                        String imageUrl = data['listImages'][index];
+                      String imageUrl = data['listImages'][index];
                       return Container(
                         width: 380,
                         height: 300,
                         decoration: const BoxDecoration(
-                          // image: DecorationImage(
-                          //   image: AssetImage(
-                          //     'lib/assets/sdkdjsa.jpg',
-                          //   ),
-                      
-                          //   // fit: BoxFit.fill,
-                          // ),
-                        ),
+                            // image: DecorationImage(
+                            //   image: AssetImage(
+                            //     'lib/assets/sdkdjsa.jpg',
+                            //   ),
+
+                            //   // fit: BoxFit.fill,
+                            // ),
+                            ),
                         child: CachedNetworkImage(
-                        imageUrl: imageUrl,
-                        placeholder: (context, url) =>
-                          CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                        fit: BoxFit.cover,
-                      ),
+                          imageUrl: imageUrl,
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                       const       Icon(Icons.error),
+                          fit: BoxFit.cover,
+                        ),
                       );
                     })),
             Padding(
@@ -70,7 +72,7 @@ OwnerDatas auth = OwnerDatas();
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
                           '${data['propertyname']}',
                           style: const TextStyle(
@@ -88,7 +90,7 @@ OwnerDatas auth = OwnerDatas();
                               border: Border.all(width: 0)),
                           child: Row(
                             children: [
-                              Icon(
+                    const          Icon(
                                 Icons.currency_rupee,
                                 size: 20,
                               ),
@@ -105,7 +107,7 @@ OwnerDatas auth = OwnerDatas();
                   ),
                   Row(
                     children: [
-                      Icon(Icons.location_on_outlined),
+                      const Icon(Icons.location_on_outlined),
                       Text(
                         ' ${data['city']}, ${data['state']}',
                         style: const TextStyle(
@@ -178,7 +180,7 @@ OwnerDatas auth = OwnerDatas();
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: RoomFutureIconWidgets(
                           futureicon: Icons.lock_clock_outlined,
                           futuretext: ' ${data['goodsefty']}   ',
@@ -215,7 +217,7 @@ OwnerDatas auth = OwnerDatas();
             ),
             height10,
             const Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: MyTextWidgets(
                 title: 'Room Facilitices',
                 fontwidget: FontWeight.w800,
@@ -377,39 +379,29 @@ OwnerDatas auth = OwnerDatas();
             SizedBox(
               width: 50,
               child: Padding(
-                padding: const EdgeInsets.only(left: 10,right: 10)
-                ,
+                padding: const EdgeInsets.only(left: 10, right: 10),
                 child: ElevatedButton(
                   onPressed: () async {
-             final Map<String,dynamic>userData = await auth.getuserdata();
-                     log('$userData');
+                    final Map<String, dynamic> userData =
+                        await auth.getuserdata();
                     Get.to(
-                   BookingScreen(
-                    userData: userData,
-                    userId: id ,
-                    bookingId: bookingId, propertyImages: data['listImages'], propertyname: data['propertyname'],
-                    
-                     
-                      
-                      //  bookingId:bookingId ,                       
-                    
-                    ),
-                     
+                      BookingScreen(
+                        userData: userData,
+                        userId: id,
+                        bookingId: bookingId,
+                        propertyImages: data['listImages'],
+                        propertyname: data['propertyname'],
+                      ),
                     );
-
                   },
-                  child: const  Text('Book & Pay Now'),
+                  child: const Text('Book & Pay Now'),
                 ),
               ),
-            ), 
+            ),
             height20,
-            
-        
           ],
         ),
       ),
     );
   }
-  
-  }
-
+}
