@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:material_icons_named/material_icons_named.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
+import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
-import 'package:speat_time_user/view/booking_screen/booking_popup.dart';
+import 'package:speat_time_user/view/booking_screen/booking_screen.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -59,7 +62,7 @@ class RoomDetailScreen extends StatelessWidget {
                           placeholder: (context, url) =>
                               const CircularProgressIndicator(),
                           errorWidget: (context, url, error) =>
-                       const       Icon(Icons.error),
+                              const Icon(Icons.error),
                           fit: BoxFit.cover,
                         ),
                       );
@@ -80,7 +83,8 @@ class RoomDetailScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(right: 20, left: 20),
+                        padding:
+                            const EdgeInsets.only(right: 20, left: 20, top: 20),
                         child: Container(
                           height: 40,
                           width: 75,
@@ -90,14 +94,17 @@ class RoomDetailScreen extends StatelessWidget {
                               border: Border.all(width: 0)),
                           child: Row(
                             children: [
-                    const          Icon(
+                              const Icon(
                                 Icons.currency_rupee,
                                 size: 20,
+                                color: whiteColor,
                               ),
                               Text(
                                 '${data['propertyPrice']}',
                                 style: const TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w600),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    color: whiteColor),
                               ),
                             ],
                           ),
@@ -129,7 +136,7 @@ class RoomDetailScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: MyTextWidgets(
-                title: 'Hotel Facilitices',
+                title: 'Room & Hotel Facilitices',
                 fontwidget: FontWeight.w800,
                 fontsize: 20,
                 fontcolor: Colors.black,
@@ -140,77 +147,88 @@ class RoomDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  height10,
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 22),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.meeting_room_outlined,
-                          futuretext: '${data['meetinghall']}',
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, left: 5, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.fastfood,
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.local_parking,
-                          futuretext: '${data['parking']}',
-                        ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.flash_on_outlined,
-                          futuretext: '${data['powerBackup']}',
-                        ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.pool,
-                          futuretext: '${data['swimmingpool']}',
-                        ),
-                      ),
-                    ],
-                  ),
-                  height30,
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.lock_clock_outlined,
-                          futuretext: ' ${data['goodsefty']}   ',
-                        ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.wifi,
-                          futuretext: '${data['wifi']}',
+                          futuretext:
+                              '${data['wifi'] == true ? 'Wifi' : 'is not here'}',
                         ),
-                      ),
-                      width30,
-                      const Padding(
-                        padding: EdgeInsets.only(left: 30),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.tv_outlined,
-                          futuretext: 'Tv',
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
                         ),
-                      ),
-                      width30,
-                      const Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,
-                          futuretext: 'Ac',
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 30, left: 7, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.lock_clock_outlined,
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}  ',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.bathtub_outlined,
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.heat_pump,
+                          futuretext:
+                              ' ${data['heater'] == true ? 'Heater' : 'is not here'}   ',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.ac_unit_outlined,
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30, left: 6, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RoomFutureIconWidgets(
+                            futureicon: Icons.meeting_room_outlined,
+                            futuretext:
+                                '${data['meetinghall'] == true ? 'Meeting Hall' : 'not avalable'}'),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.local_parking,
+                          futuretext:
+                              '${data['parking'] == true ? 'Parking' : 'is not here'}',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.flash_on_outlined,
+                          futuretext:
+                              '${data['powerBackup'] == true ? 'power Backup' : 'is not here'}',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.pool,
+                          futuretext:
+                              '${data['swimmingpool'] == true ? 'pool' : 'is not here'}',
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -219,7 +237,7 @@ class RoomDetailScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: MyTextWidgets(
-                title: 'Room Facilitices',
+                title: 'NearBy',
                 fontwidget: FontWeight.w800,
                 fontsize: 20,
                 fontcolor: Colors.black,
@@ -231,77 +249,57 @@ class RoomDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  height10,
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 10, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,
-                          futuretext: '${data['Ac']}',
+                          futuretext:
+                              '${data['Ac'] == true ? 'Ac' : 'is not here'}',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.tv,
-                          futuretext: '${data['tv']}',
+                          futuretext:
+                              '${data['tv'] == true ? 'Tv' : 'is not here'}',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.heat_pump_outlined,
-                          futuretext: 'Heater: ${data['heater']}',
+                          futuretext:
+                              'Heater: ${data['heater'] == true ? 'Heater' : 'is not here'}',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: RoomFutureIconWidgets(
-                          futureicon: Icons.wifi,
+                        RoomFutureIconWidgets(
+                          futureicon: IonIcons.wifi,
                           futuretext: '${data['wifi']}',
                         ),
-                      ),
-                    ],
+                      ]
+                    ),
                   ),
-                  height30,
-                  const Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
+                  const Padding(
+                    padding: EdgeInsets.only(top: 30, left: 10, right: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        RoomFutureIconWidgets(
                           futureicon: Icons.lock_clock_outlined,
                           futuretext: ' Sefety   ',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: EdgeInsets.only(left: 10),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.bathtub_outlined,
                           futuretext: 'tailetpool',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: EdgeInsets.only(left: 30),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.tv_outlined,
                           futuretext: 'Tv',
                         ),
-                      ),
-                      width30,
-                      Padding(
-                        padding: EdgeInsets.only(left: 20),
-                        child: RoomFutureIconWidgets(
+                        RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,
                           futuretext: 'Ac',
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
