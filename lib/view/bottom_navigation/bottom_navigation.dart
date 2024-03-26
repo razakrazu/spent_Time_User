@@ -53,13 +53,13 @@ class _BottomNavigationBarExampleState
             backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
+            icon: Icon(Icons.card_travel_rounded),
+            label: 'Bookings',
             backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.search),
+            label: 'Search',
             backgroundColor: Color.fromARGB(255, 156, 156, 156),
           ),
           BottomNavigationBarItem(

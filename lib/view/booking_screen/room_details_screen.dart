@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:material_icons_named/material_icons_named.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/booking_screen.dart';
+import 'package:speat_time_user/view/booking_screen/widgets/nearby_items_widgets.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -148,7 +149,7 @@ class RoomDetailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, left: 5, right: 20),
+                    padding: const EdgeInsets.only(top: 30,  right: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -176,7 +177,7 @@ class RoomDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 30, left: 7, right: 20),
+                    padding: EdgeInsets.only(top: 30, right: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -204,7 +205,7 @@ class RoomDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, left: 6, right: 20),
+                    padding: const EdgeInsets.only(top: 30,  right: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -237,70 +238,40 @@ class RoomDetailScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.all(8.0),
               child: MyTextWidgets(
-                title: 'NearBy',
+                title: "What's Nearby",
                 fontwidget: FontWeight.w800,
                 fontsize: 20,
                 fontcolor: Colors.black,
               ),
             ),
             height20,
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
+const Padding(
+              padding:  EdgeInsets.only(left: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 10, right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.ac_unit_outlined,
-                          futuretext:
-                              '${data['Ac'] == true ? 'Ac' : 'is not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.tv,
-                          futuretext:
-                              '${data['tv'] == true ? 'Tv' : 'is not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.heat_pump_outlined,
-                          futuretext:
-                              'Heater: ${data['heater'] == true ? 'Heater' : 'is not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: IonIcons.wifi,
-                          futuretext: '${data['wifi']}',
-                        ),
-                      ]
-                    ),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 30, left: 10, right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.lock_clock_outlined,
-                          futuretext: ' Sefety   ',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.bathtub_outlined,
-                          futuretext: 'tailetpool',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.tv_outlined,
-                          futuretext: 'Tv',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.ac_unit_outlined,
-                          futuretext: 'Ac',
-                        ),
-                      ],
-                    ),
-                  ),
+             NearByItemsWidgets(icons: Icons.train_rounded, label: 'Railway Satation',),
+             height10,          
+           NearByItemsWidgets(icons: Icons.airplanemode_active_sharp, label: 'Air Port',),
+             height10,
+            NearByItemsWidgets(icons: Icons.directions_bus, label: 'Air Port',),
+              height10,                      
+             NearByItemsWidgets(icons: Icons.directions_car, label: 'Texi Car',),
+              height10,
+             NearByItemsWidgets(icons: Icons.restaurant, label: 'Restaurant',),
+              height10,
+            NearByItemsWidgets(icons: Icons.location_city, label: 'Town',),
+               height10,
+               NearByItemsWidgets(icons: Icons.local_hospital, label: 'Hospital',),
+                height10,
+              NearByItemsWidgets(icons: Icons.park, label: 'Park',),
+
+
+
+
+
+
+
                 ],
               ),
             ),
@@ -358,21 +329,7 @@ class RoomDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            height10,
-            const Row(
-              children: [
-                Icon(
-                  Icons.label_important,
-                ),
-                width10,
-                MyTextWidgets(
-                  title: 'Room Polices',
-                  fontwidget: FontWeight.w400,
-                  fontsize: 15,
-                  fontcolor: Color.fromARGB(255, 63, 63, 63),
-                ),
-              ],
-            ),
+          
             height10,
             SizedBox(
               width: 50,
@@ -403,3 +360,4 @@ class RoomDetailScreen extends StatelessWidget {
     );
   }
 }
+

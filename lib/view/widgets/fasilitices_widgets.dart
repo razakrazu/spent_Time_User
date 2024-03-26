@@ -6,8 +6,8 @@ class RoomFutureIconWidgets extends StatelessWidget {
     required this.futureicon,
     required this.futuretext,
   });
-  final futureicon;
-  final futuretext;
+  final IconData futureicon;
+  final String futuretext;
   @override
   Widget build(BuildContext context) {
     return Column(
