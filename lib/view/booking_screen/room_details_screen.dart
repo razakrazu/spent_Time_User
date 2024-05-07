@@ -184,17 +184,17 @@ class RoomDetailScreen extends StatelessWidget {
                         RoomFutureIconWidgets(
                           futureicon: Icons.lock_clock_outlined,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}  ',
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.bathtub_outlined,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.heat_pump,
                           futuretext:
-                              ' ${data['heater'] == true ? 'Heater' : 'is not here'}   ',
+                              ' ${data['heater'] == true ? 'Heater' : 'is not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,

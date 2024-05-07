@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/controller/singup/authentication_repository.dart';
@@ -158,7 +160,7 @@ class SingUpScreen extends StatelessWidget {
               
                         );
                              if (authController.user.value != null) {
-                   
+                   log('${authController.user.value}');
                         Get.to( const  BottomNavigationBarExample()); 
                           
                 }
