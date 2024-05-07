@@ -82,8 +82,8 @@ class BookingScreen extends StatelessWidget {
                                     'dd-MM-yyyy',
                                   )
                                       .format(
-                                          userController.dateRnage.value.start)
-                                      .toString(),
+                                          userController.dateRnage.value.start),
+                                      
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600),
@@ -105,8 +105,8 @@ class BookingScreen extends StatelessWidget {
                                 DateFormat(
                                   'dd-MM-yyyy',
                                 )
-                                    .format(userController.dateRnage.value.end)
-                                    .toString(),
+                                    .format(userController.dateRnage.value.end),
+                                   
                                 style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),

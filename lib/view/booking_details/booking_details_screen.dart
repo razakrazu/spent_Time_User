@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_details.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
@@ -12,6 +13,8 @@ class BookingDetailsScreen extends StatelessWidget {
   });
   RoomsBookingDatas getDataController = Get.put(RoomsBookingDatas());
   OwnerDatas RoomDataController = Get.put(OwnerDatas());
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,14 +101,14 @@ class BookingDetailsScreen extends StatelessWidget {
                                       fontcolor: const Color.fromARGB(
                                           255, 48, 48, 48)),
                                   MyTextWidgets(
-                                      title: 'CheckIn: $checkIn ',
-                                      fontsize: 13,
+                                      title: 'CheckIn: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkIn))}',
+                                      fontsize: 15,
                                       fontwidget: FontWeight.w600,
                                       fontcolor: const Color.fromARGB(
                                           255, 58, 58, 58)),
                                   MyTextWidgets(
-                                      title: 'CheckOut: $checkOut  ',
-                                      fontsize: 13,
+                                      title: 'CheckOut: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkOut))}  ',
+                                      fontsize: 15,
                                       fontwidget: FontWeight.w600,
                                       fontcolor: const Color.fromARGB(
                                           255, 54, 54, 54)),
