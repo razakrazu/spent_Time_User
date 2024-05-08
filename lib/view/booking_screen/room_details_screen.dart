@@ -245,26 +245,26 @@ class RoomDetailScreen extends StatelessWidget {
               ),
             ),
             height20,
-const Padding(
+ Padding(
               padding:  EdgeInsets.only(left: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-             NearByItemsWidgets(icons: Icons.train_rounded, label: 'Railway Satation',),
+             NearByItemsWidgets(icons: Icons.train_rounded, label:' ${data['railwayStation']==true?'Railway Satation':'is not here'}',),
              height10,          
-           NearByItemsWidgets(icons: Icons.airplanemode_active_sharp, label: 'Air Port',),
+           NearByItemsWidgets(icons: Icons.airplanemode_active_sharp, label: ' ${data['airport']==true?'Air Port':'is not here'}',),
              height10,
-            NearByItemsWidgets(icons: Icons.directions_bus, label: 'Air Port',),
+            NearByItemsWidgets(icons: Icons.directions_bus, label: ' ${data['busStant']==true?'Bus Stant':'is not here'}',),
               height10,                      
-             NearByItemsWidgets(icons: Icons.directions_car, label: 'Texi Car',),
+             NearByItemsWidgets(icons: Icons.directions_car, label:' ${data['texiStation']==true?'Texi Stant':'is not here'}',),
               height10,
-             NearByItemsWidgets(icons: Icons.restaurant, label: 'Restaurant',),
+             NearByItemsWidgets(icons: Icons.restaurant, label:' ${data['restorent']==true?'Resroren':'is not here'}',),
               height10,
-            NearByItemsWidgets(icons: Icons.location_city, label: 'Town',),
+            NearByItemsWidgets(icons: Icons.location_city, label:' ${data['town']==true?'Town':'is not here'}',),
                height10,
-               NearByItemsWidgets(icons: Icons.local_hospital, label: 'Hospital',),
+               NearByItemsWidgets(icons: Icons.local_hospital, label: ' ${data['hospital']==true?'Hospital':'is not here'}',),
                 height10,
-              NearByItemsWidgets(icons: Icons.park, label: 'Park',),
+              NearByItemsWidgets(icons: Icons.park, label:' ${data['park']==true?'Park':'is not here'}',),
 
 
 

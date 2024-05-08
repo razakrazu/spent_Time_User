@@ -9,6 +9,7 @@ class NearByItemsWidgets extends StatelessWidget {
 final IconData icons;
 final String label;
  
+ 
   @override
   Widget build(BuildContext context) {
     return Row(children: [
