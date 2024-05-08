@@ -20,7 +20,7 @@ class BookingScreen extends StatelessWidget {
       required this.propertyname});
   final String userId;
   final Map<String, dynamic> userData;
-  final bookingId;
+  final  bookingId;
   final List propertyImages;
   final String propertyname;
   @override
@@ -35,7 +35,7 @@ class BookingScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 86, 120, 92),
+        backgroundColor:const Color.fromARGB(255, 86, 120, 92),
       ),
       body: SingleChildScrollView(
         child: Container(

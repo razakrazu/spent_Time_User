@@ -246,7 +246,7 @@ class RoomDetailScreen extends StatelessWidget {
             ),
             height20,
  Padding(
-              padding:  EdgeInsets.only(left: 10),
+              padding:const  EdgeInsets.only(left: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -284,53 +284,25 @@ class RoomDetailScreen extends StatelessWidget {
                 fontcolor: Colors.black,
               ),
             ),
-            height20,
-            const Row(
-              children: [
-                Icon(
-                  Icons.label_important,
-                ),
-                width10,
-                MyTextWidgets(
-                  title: 'Room Polices',
-                  fontwidget: FontWeight.w400,
-                  fontsize: 15,
-                  fontcolor: Color.fromARGB(255, 63, 63, 63),
-                ),
-              ],
-            ),
             height10,
-            const Row(
+             Row(
               children: [
-                Icon(
+          const      Icon(
                   Icons.label_important,
                 ),
                 width10,
                 MyTextWidgets(
-                  title: 'Room Polices',
+                  title: '${data['property Roles']}',
                   fontwidget: FontWeight.w400,
                   fontsize: 15,
-                  fontcolor: Color.fromARGB(255, 63, 63, 63),
+                  fontcolor: const Color.fromARGB(255, 63, 63, 63),
                 ),
               ],
             ),
-            height10,
-            const Row(
-              children: [
-                Icon(
-                  Icons.label_important,
-                ),
-                width10,
-                MyTextWidgets(
-                  title: 'Room Polices',
-                  fontwidget: FontWeight.w400,
-                  fontsize: 15,
-                  fontcolor: Color.fromARGB(255, 63, 63, 63),
-                ),
-              ],
-            ),
+            
+           
           
-            height10,
+            height20,
             SizedBox(
               width: 50,
               child: Padding(
