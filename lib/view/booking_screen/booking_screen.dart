@@ -9,6 +9,7 @@ import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/model/booking_room.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
 import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
+import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
 
 class BookingScreen extends StatelessWidget {
   BookingScreen(
@@ -187,17 +188,9 @@ class BookingScreen extends StatelessWidget {
                     ],
                   ),
                   height30,
-                  Container(
-                      width: 350,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 1)),
-                      child: TextButton(
-                          onPressed: () {
-                            Get.to(const RazorpayScreeen());
-                          },
-                          child: const Text('Payment'))),
+                   AppButtonWidget( buttontext: 'Payment',ontap:(){
+                    Get.to(const RazorpayScreeen());
+                  }, btnHeight: 50, btnWidth: 350 ,),
                 ],
               ),
             )),
@@ -205,3 +198,4 @@ class BookingScreen extends StatelessWidget {
     );
   }
 }
+

@@ -7,6 +7,7 @@ import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/booking_screen.dart';
+import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
 import 'package:speat_time_user/view/booking_screen/widgets/nearby_items_widgets.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
@@ -303,28 +304,23 @@ class RoomDetailScreen extends StatelessWidget {
            
           
             height20,
-            SizedBox(
-              width: 50,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
-                child: ElevatedButton(
-                  onPressed: () async {
-                    final Map<String, dynamic> userData =
-                        await auth.getuserdata();
-                    Get.to(
-                      BookingScreen(
-                        userData: userData,
-                        userId: id,
-                        bookingId: bookingId,
-                        propertyImages: data['listImages'],
-                        propertyname: data['propertyname'],
-                      ),
-                    );
-                  },
-                  child: const Text('Book & Pay Now'),
-                ),
-              ),
-            ),
+       
+                          Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: AppButtonWidget( buttontext: 'Book & Pay Now',ontap:() async {
+                                           final Map<String, dynamic> userData =
+                                                  await auth.getuserdata();
+                                              Get.to(
+                                                BookingScreen(
+                                                  userData: userData,
+                                                  userId: id,
+                                                  bookingId: bookingId,
+                                                  propertyImages: data['listImages'],
+                                                  propertyname: data['propertyname'],
+                                                ),
+                                              );
+                                            }, btnHeight: 50, btnWidth: 300 ,),
+                          ),
             height20,
           ],
         ),
