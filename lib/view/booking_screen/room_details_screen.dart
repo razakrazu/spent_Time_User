@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:simple_icons/simple_icons.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
@@ -40,7 +38,7 @@ class RoomDetailScreen extends StatelessWidget {
         child: ListView(
           children: [
             Container(
-                height: 300,
+                height: 280,
                 width: 480,
                 child: ListView.builder(
                     itemCount: (data['listImages'] as List<dynamic>).length,
@@ -49,82 +47,88 @@ class RoomDetailScreen extends StatelessWidget {
                       String imageUrl = data['listImages'][index];
                       return Container(
                         width: 380,
+                        
                         height: 300,
-                        decoration: const BoxDecoration(
-                            // image: DecorationImage(
-                            //   image: AssetImage(
-                            //     'lib/assets/sdkdjsa.jpg',
-                            //   ),
+                        // decoration: const BoxDecoration(
+                        //     // image: DecorationImage(
+                        //     //   image: AssetImage(
+                        //     //     'lib/assets/sdkdjsa.jpg',
+                        //     //   ),
 
-                            //   // fit: BoxFit.fill,
-                            // ),
-                            ),
+                        //     //   // fit: BoxFit.fill,
+                        //     // ),
+                        //     ),
                         child: CachedNetworkImage(
+                        
                           imageUrl: imageUrl,
                           placeholder: (context, url) =>
                               const CircularProgressIndicator(),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                           fit: BoxFit.cover,
+                          fadeInCurve: Curves.bounceInOut,
                         ),
                       );
                     })),
-            Padding(
-              padding: const EdgeInsets.only(left: 5),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          '${data['propertyname']}',
-                          style: const TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.w800),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(right: 20, left: 20, top: 20),
-                        child: Container(
-                          height: 40,
-                          width: 75,
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 64, 144, 66),
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(width: 0)),
-                          child: Row(
-                            children: [
-                              const Icon(
-                                Icons.currency_rupee,
-                                size: 20,
-                                color: whiteColor,
-                              ),
-                              Text(
-                                '${data['propertyPrice']}',
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w600,
-                                    color: whiteColor),
-                              ),
-                            ],
+            Container(
+            
+              child: Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '${data['propertyname']}',
+                            style: const TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.w800),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Icon(Icons.location_on_outlined),
-                      Text(
-                        ' ${data['city']}, ${data['state']}',
-                        style: const TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                ],
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(right: 20, left: 20, top: 20),
+                          child: Container(
+                            height: 40,
+                            width: 75,
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 64, 144, 66),
+                                borderRadius: BorderRadius.circular(5),
+                                border: Border.all(width: 0)),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.currency_rupee,
+                                  size: 20,
+                                  color: whiteColor,
+                                ),
+                                Text(
+                                  '${data['propertyPrice']}',
+                                  style: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                      color: whiteColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const Icon(Icons.location_on_outlined),
+                        Text(
+                          ' ${data['city']}, ${data['state']}',
+                          style: const TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             const Padding(
@@ -140,94 +144,97 @@ class RoomDetailScreen extends StatelessWidget {
               child: MyTextWidgets(
                 title: 'Room & Hotel Facilitices',
                 fontwidget: FontWeight.w800,
-                fontsize: 20,
+                fontsize: 22,
                 fontcolor: Colors.black,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20 ,right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30,  right: 20),
+                    padding: const EdgeInsets.only(top: 30,),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         RoomFutureIconWidgets(
                           futureicon: Icons.fastfood,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                              ' ${data['food'] == true ? 'Food' : 'Not here'}   ',
                         ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.wifi,
-                          futuretext:
-                              '${data['wifi'] == true ? 'Wifi' : 'is not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.tv_outlined,
-                          futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
-                        ),
+                       RoomFutureIconWidgets(
+                            futureicon: Icons.meeting_room_outlined,
+                            futuretext:
+                                '${data['meetinghall'] == true ? 'Meeting Hall' : 'Not here'}'),
+       
                         RoomFutureIconWidgets(
                           futureicon: Icons.ac_unit_outlined,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                              ' ${data['Ac'] == true ? 'Ac' : 'Not here'}   ',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.lock_clock_outlined,
+                          futuretext:
+                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'Not here'}',
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, right: 20),
+                    padding: const EdgeInsets.only(top: 30, ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.lock_clock_outlined,
+                        
+                                         RoomFutureIconWidgets(
+                          futureicon: Icons.tv_outlined,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}',
+                              ' ${data['tv'] == true ? 'Tv' : 'Not here'}   ',
                         ),
                         RoomFutureIconWidgets(
-                          futureicon: Icons.bathtub_outlined,
+                          futureicon: Icons.videocam_outlined,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}',
+                              ' ${data['cctv'] == true ? 'CCtv' : 'Not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.heat_pump,
                           futuretext:
-                              ' ${data['heater'] == true ? 'Heater' : 'is not here'}',
+                              ' ${data['heater'] == true ? 'Heater' : 'Not here'}',
                         ),
                         RoomFutureIconWidgets(
-                          futureicon: Icons.ac_unit_outlined,
+                          futureicon: Icons.fitness_center,
                           futuretext:
-                              ' ${data['goodsefty'] == true ? 'Good Safty' : 'is not here'}   ',
+                              ' ${data['WorkOut'] == true ? 'Gym' : 'Not here'}   ',
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 30,  right: 33),
+                    padding: const EdgeInsets.only(top: 30, ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RoomFutureIconWidgets(
-                            futureicon: Icons.meeting_room_outlined,
-                            futuretext:
-                                '${data['meetinghall'] == true ? 'Meeting Hall' : 'not avalable'}'),
+                      
+                                   RoomFutureIconWidgets(
+                          futureicon: Icons.wifi,
+                          futuretext:
+                              '${data['wifi'] == true ? 'Wifi' : 'Not here'}',
+                        ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.local_parking,
                           futuretext:
-                              '${data['parking'] == true ? 'Parking' : 'is not here'}',
+                              '${data['parking'] == true ? 'Parking' : 'Not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.flash_on_outlined,
                           futuretext:
-                              '${data['powerBackup'] == true ? 'Power Backup' : 'is not here'}',
+                              '${data['powerBackup'] == true ? 'Power Backup' : 'Not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.pool,
                           futuretext:
-                              '${data['swimmingpool'] == true ? 'pool' : 'is not here'}',
+                              '${data['swimmingpool'] == true ? 'pool' : 'Not here'}',
                         ),
                       ],
                     ),
@@ -268,11 +275,6 @@ class RoomDetailScreen extends StatelessWidget {
               NearByItemsWidgets(icons: Icons.park, label:' ${data['park']==true?'Park':'is not here'}',),
 
 
-
-
-
-
-
                 ],
               ),
             ),
@@ -300,9 +302,7 @@ class RoomDetailScreen extends StatelessWidget {
                 ),
               ],
             ),
-            
-           
-          
+    
             height20,
        
                           Padding(
