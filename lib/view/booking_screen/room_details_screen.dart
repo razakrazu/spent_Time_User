@@ -178,7 +178,7 @@ class RoomDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 30, right: 20),
+                    padding: const EdgeInsets.only(top: 30, right: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -206,7 +206,7 @@ class RoomDetailScreen extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 30,  right: 25),
+                    padding: const EdgeInsets.only(top: 30,  right: 33),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -222,7 +222,7 @@ class RoomDetailScreen extends StatelessWidget {
                         RoomFutureIconWidgets(
                           futureicon: Icons.flash_on_outlined,
                           futuretext:
-                              '${data['powerBackup'] == true ? 'power Backup' : 'is not here'}',
+                              '${data['powerBackup'] == true ? 'Power Backup' : 'is not here'}',
                         ),
                         RoomFutureIconWidgets(
                           futureicon: Icons.pool,

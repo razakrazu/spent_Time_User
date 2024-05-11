@@ -21,7 +21,7 @@ class BookingScreen extends StatelessWidget {
       required this.propertyname});
   final String userId;
   final Map<String, dynamic> userData;
-  final  bookingId;
+  final bookingId;
   final List propertyImages;
   final String propertyname;
   @override
@@ -36,7 +36,7 @@ class BookingScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor:const Color.fromARGB(255, 86, 120, 92),
+        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -81,10 +81,8 @@ class BookingScreen extends StatelessWidget {
                                 () => Text(
                                   DateFormat(
                                     'dd-MM-yyyy',
-                                  )
-                                      .format(
-                                          userController.dateRnage.value.start),
-                                      
+                                  ).format(
+                                      userController.dateRnage.value.start),
                                   style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w600),
@@ -105,9 +103,7 @@ class BookingScreen extends StatelessWidget {
                               () => Text(
                                 DateFormat(
                                   'dd-MM-yyyy',
-                                )
-                                    .format(userController.dateRnage.value.end),
-                                   
+                                ).format(userController.dateRnage.value.end),
                                 style: const TextStyle(
                                     fontSize: 20, fontWeight: FontWeight.w600),
                               ),
@@ -138,59 +134,57 @@ class BookingScreen extends StatelessWidget {
                   Row(
                     children: [
                       width20,
-                      Container(
-                          width: 160,
-                          height: 60,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(width: 1)),
-                          child: TextButton(
-                              onPressed: () {
-                                Get.back();
-                              },
-                              child: const Text('Cancel'))),
+                      AppButtonWidget(
+                        buttontext: 'Cancel',
+                        ontap: () {
+                          Get.back();
+                        },
+                        btnHeight: 57,
+                        btnWidth: 160,
+                      ),
                       width30,
-                      Container(
-                          width: 160,
-                          height: 60,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(width: 1)),
-                          child: TextButton(
-                              onPressed: () async {
-                                final bookingDatas = BookingModel(
-                                  checkIn: userController.dateRnage.value.start
-                                      .toString(),
-                                  checkOut: userController.dateRnage.value.end
-                                      .toString(),
-                                  roomCount: userController.roomcount.text,
-                                  guest: userController.guest.text,
-                                  roomId: userId,
-                                  propertyImages: propertyImages,
-                                  propertyname: propertyname,
-                                  userId: userData['userId'],
-                                );
+                      AppButtonWidget(
+                        buttontext: 'Apply',
+                        ontap: () async {
+                          final bookingDatas = BookingModel(
+                            checkIn:
+                                userController.dateRnage.value.start.toString(),
+                            checkOut:
+                                userController.dateRnage.value.end.toString(),
+                            roomCount: userController.roomcount.text,
+                            guest: userController.guest.text,
+                            roomId: userId,
+                            propertyImages: propertyImages,
+                            propertyname: propertyname,
+                            userId: userData['userId'],
+                          );
 
-                                final respons = await userController
-                                    .newBooking(bookingDatas);
+                          final respons =
+                              await userController.newBooking(bookingDatas);
 
-                                if (respons) {
-                                  Get.snackbar(
-                                      'success', 'Your table is reserved',
-                                      backgroundColor: Colors.green);
-                                } else {
-                                  Get.snackbar('failed',
-                                      'Check your internet connection',
-                                      backgroundColor: Colors.red);
-                                }
-                              },
-                              child: const Text('Apply'))),
+                          if (respons) {
+                            Get.snackbar('success', 'Your Room is reserved',
+                                backgroundColor: Colors.green);
+                          } else {
+                            Get.snackbar(
+                                'failed', 'Check your internet connection',
+                                backgroundColor: Colors.red);
+                          }
+                        },
+                        btnHeight: 57,
+                        btnWidth: 160,
+                      ),
                     ],
                   ),
                   height30,
-                   AppButtonWidget( buttontext: 'Payment',ontap:(){
-                    Get.to(const RazorpayScreeen());
-                  }, btnHeight: 50, btnWidth: 350 ,),
+                  AppButtonWidget(
+                    buttontext: 'Payment',
+                    ontap: () {
+                      Get.to(const RazorpayScreeen());
+                    },
+                    btnHeight: 50,
+                    btnWidth: 350,
+                  ),
                 ],
               ),
             )),
@@ -198,4 +192,3 @@ class BookingScreen extends StatelessWidget {
     );
   }
 }
-

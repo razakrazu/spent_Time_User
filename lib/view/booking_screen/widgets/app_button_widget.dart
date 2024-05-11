@@ -2,17 +2,15 @@
 import 'package:flutter/material.dart';
 
 class AppButtonWidget extends StatelessWidget {
-  var height;
-  
-  var width;
 
-   AppButtonWidget({
-    super.key,required this.buttontext, this.ontap, required this.btnHeight, required this.btnWidth,
+
+const AppButtonWidget({
+    super.key,required this.buttontext, required this.ontap, required this.btnHeight, required this.btnWidth,
   });
   final double  btnHeight;
   final double btnWidth;
   final String  buttontext;
-  final ontap;
+  final  VoidCallback ontap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +21,7 @@ class AppButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(width: 1)),
         child: TextButton(
-            onPressed: () {
-              
-            },
+            onPressed:ontap ,
             child:  Text(buttontext)));
   }
 }
