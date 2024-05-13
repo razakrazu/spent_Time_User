@@ -10,6 +10,7 @@ import 'package:speat_time_user/model/booking_room.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
 import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
+import 'package:speat_time_user/view/widgets/popup_massages.dart';
 
 class BookingScreen extends StatelessWidget {
   BookingScreen(
@@ -27,8 +28,8 @@ class BookingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserDatas userController = UserDatas();
+AllSnacbarMassages massages=AllSnacbarMassages();
 
-    log('$propertyImages');
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -163,8 +164,10 @@ class BookingScreen extends StatelessWidget {
                               await userController.newBooking(bookingDatas);
 
                           if (respons) {
-                            Get.snackbar('success', 'Your Room is reserved',
-                                backgroundColor: Colors.green);
+                            // Get.snackbar('success', 'Your Room is reserved',
+                            //     backgroundColor: Colors.green);
+                          massages.successMassage();
+
                           } else {
                             Get.snackbar(
                                 'failed', 'Check your internet connection',

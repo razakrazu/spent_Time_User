@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/controller/singup/authentication_repository.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
+import 'package:speat_time_user/core/color.dart';
+import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/room_details_screen.dart';
+import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key, this.userId});
@@ -22,21 +25,24 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey,
+        title:const MyTextWidgets(title: 'HOME', fontsize: 27, fontwidget: FontWeight.w900, fontcolor: blackColor) ,
+        centerTitle: true,
+        leading:IconButton(
+          onPressed: () {
+              signupController.signOut();
+        }, icon:const Icon(Icons.menu)) ,
+        actions:const [
+          Padding(
+            padding:  EdgeInsets.all(8.0),
+            child: CircleAvatar(),
+          ),
+        ],),
       body: SafeArea(
           child: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(onPressed: () {
-              signupController.signOut();
-                }, icon: Icon(Icons.notes)),
-                CircleAvatar(),
-              ],
-            ),
-          ),
+   height15,
           const Padding(
             padding: EdgeInsets.only(
               left: 17,

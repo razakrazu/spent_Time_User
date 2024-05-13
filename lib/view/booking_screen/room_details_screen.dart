@@ -26,14 +26,14 @@ class RoomDetailScreen extends StatelessWidget {
     OwnerDatas auth = OwnerDatas();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Booking Room',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
-      ),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Booking Room',
+      //     style: TextStyle(color: Colors.white),
+      //   ),
+      //   centerTitle: true,
+      //   backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+      // ),
       body: SafeArea(
         child: ListView(
           children: [
@@ -45,102 +45,129 @@ class RoomDetailScreen extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       String imageUrl = data['listImages'][index];
-                      return Container(
-                        width: 380,
+                      return Stack(
+                        children: [
                         
-                        height: 300,
-                        // decoration: const BoxDecoration(
-                        //     // image: DecorationImage(
-                        //     //   image: AssetImage(
-                        //     //     'lib/assets/sdkdjsa.jpg',
-                        //     //   ),
+                          Container(
+                            width: 380,
+                            
+                            height: 300,
+                            
+                            // decoration: const BoxDecoration(
+                            //     // image: DecorationImage(
+                            //     //   image: AssetImage(
+                            //     //     'lib/assets/sdkdjsa.jpg',
+                            //     //   ),
 
-                        //     //   // fit: BoxFit.fill,
-                        //     // ),
-                        //     ),
-                        child: CachedNetworkImage(
-                        
-                          imageUrl: imageUrl,
-                          placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                          fit: BoxFit.cover,
-                          fadeInCurve: Curves.bounceInOut,
-                        ),
-                      );
-                    })),
-            Container(
-            
-              child: Padding(
-                padding: const EdgeInsets.only(left: 5),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            '${data['propertyname']}',
-                            style: const TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w800),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(right: 20, left: 20, top: 20),
-                          child: Container(
-                            height: 40,
-                            width: 75,
-                            decoration: BoxDecoration(
-                                color: Color.fromARGB(255, 64, 144, 66),
-                                borderRadius: BorderRadius.circular(5),
-                                border: Border.all(width: 0)),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.currency_rupee,
-                                  size: 20,
-                                  color: whiteColor,
-                                ),
-                                Text(
-                                  '${data['propertyPrice']}',
-                                  style: const TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      color: whiteColor),
-                                ),
-                              ],
+                            //     //   // fit: BoxFit.fill,
+                            //     // ),
+                            //     ),
+                            child: CachedNetworkImage(
+                            
+                              imageUrl: imageUrl,
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              fit: BoxFit.cover,
+                              fadeInCurve: Curves.bounceInOut,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(Icons.location_on_outlined),
-                        Text(
-                          ' ${data['city']}, ${data['state']}',
-                          style: const TextStyle(
-                              fontSize: 17, fontWeight: FontWeight.w500),
-                        ),
-                      ],
-                    ),
-                  ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15,top: 25),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                              CircleAvatar(backgroundColor: Color.fromARGB(255, 255, 255, 255).withOpacity(0.4),
+                                child: IconButton(onPressed: (){
+                              Get.back();
+                              }, icon:Icon(Icons.arrow_back)),),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 260),
+                                child: CircleAvatar(backgroundColor: 
+                                 Color.fromARGB(255, 255, 255, 255).withOpacity(0.3),
+                                // Color.fromARGB(255, 189, 233, 255),
+                                  child: IconButton(onPressed: (){
+                                                        
+                                }, icon:Icon(Icons.favorite_border)),),
+                              )
+                              ],
+                                                      ),
+                            ),
+                        ],
+                      );
+                    })),
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                height: 100,
+              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 212, 209, 209),
+                                  borderRadius: BorderRadius.circular(5),
+                                 ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 5),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              '${data['propertyname']}',
+                              style: const TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.w800),
+                            ),
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(right: 20, left: 20, top: 20),
+                            child: Container(
+                              height: 40,
+                              width: 75,
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 64, 144, 66),
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(width: 0)),
+                              child: Row(
+                                children: [
+                                  const Icon(
+                                    Icons.currency_rupee,
+                                    size: 20,
+                                    color: whiteColor,
+                                  ),
+                                  Text(
+                                    '${data['propertyPrice']}',
+                                    style: const TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        color: whiteColor),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.location_on_outlined),
+                          Text(
+                            ' ${data['city']}, ${data['state']}',
+                            style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
+         
             const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Divider(
-                color: Color.fromARGB(255, 166, 164, 164),
-                height: 25,
-                thickness: 2,
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.only(left: 10,top: 10),
               child: MyTextWidgets(
                 title: 'Room & Hotel Facilitices',
                 fontwidget: FontWeight.w800,
@@ -148,13 +175,14 @@ class RoomDetailScreen extends StatelessWidget {
                 fontcolor: Colors.black,
               ),
             ),
+               DividerLine(),
             Padding(
-              padding: const EdgeInsets.only(left: 20 ,right: 10),
+              padding: const EdgeInsets.only(left: 20 ,right: 20,top: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 30,),
+                    padding: const EdgeInsets.only(top: 10,),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -181,37 +209,9 @@ class RoomDetailScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                 
                   Padding(
-                    padding: const EdgeInsets.only(top: 30, ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        
-                                         RoomFutureIconWidgets(
-                          futureicon: Icons.tv_outlined,
-                          futuretext:
-                              ' ${data['tv'] == true ? 'Tv' : 'Not here'}   ',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.videocam_outlined,
-                          futuretext:
-                              ' ${data['cctv'] == true ? 'CCtv' : 'Not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.heat_pump,
-                          futuretext:
-                              ' ${data['heater'] == true ? 'Heater' : 'Not here'}',
-                        ),
-                        RoomFutureIconWidgets(
-                          futureicon: Icons.fitness_center,
-                          futuretext:
-                              ' ${data['WorkOut'] == true ? 'Gym' : 'Not here'}   ',
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 30, ),
+                    padding: const EdgeInsets.only(top: 20, ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -239,6 +239,35 @@ class RoomDetailScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                   Padding(
+                    padding: const EdgeInsets.only(top: 20, ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        
+                                         RoomFutureIconWidgets(
+                          futureicon: Icons.tv_outlined,
+                          futuretext:
+                              ' ${data['tv'] == true ? 'Tv' : 'Not here'}   ',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.videocam_outlined,
+                          futuretext:
+                              ' ${data['cctv'] == true ? 'CCtv' : 'Not here'}',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.heat_pump,
+                          futuretext:
+                              ' ${data['heater'] == true ? 'Heater' : 'Not here'}',
+                        ),
+                        RoomFutureIconWidgets(
+                          futureicon: Icons.fitness_center,
+                          futuretext:
+                              ' ${data['WorkOut'] == true ? 'Gym' : 'Not here'}   ',
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -252,7 +281,7 @@ class RoomDetailScreen extends StatelessWidget {
                 fontcolor: Colors.black,
               ),
             ),
-            height20,
+            height10,
  Padding(
               padding:const  EdgeInsets.only(left: 10),
               child: Column(
@@ -326,6 +355,16 @@ class RoomDetailScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Padding DividerLine() {
+    return const Padding(
+            padding: EdgeInsets.only(right: 125,left: 10, ),
+            child: Divider(
+              color: Color.fromARGB(255, 134, 132, 132),
+              thickness: 3,
+            ),
+          );
   }
 }
 
