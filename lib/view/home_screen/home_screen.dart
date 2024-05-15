@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -26,13 +25,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
-        title:const MyTextWidgets(title: 'HOME', fontsize: 27, fontwidget: FontWeight.w900, fontcolor: blackColor) ,
+     backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+        title:const MyTextWidgets(title: 'HOME', fontsize: 24, fontwidget: FontWeight.w700, fontcolor: whiteColor) ,
         centerTitle: true,
         leading:IconButton(
           onPressed: () {
               signupController.signOut();
-        }, icon:const Icon(Icons.menu)) ,
+        }, icon:const Icon(Icons.menu,color: Colors.white,)) ,
         actions:const [
           Padding(
             padding:  EdgeInsets.all(8.0),
@@ -43,34 +42,7 @@ class HomeScreen extends StatelessWidget {
           child: ListView(
         children: [
    height15,
-          const Padding(
-            padding: EdgeInsets.only(
-              left: 17,
-              right: 17,
-            ),
-            child: Text(
-              'Lets Explore Best Hotels',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 25),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 17, right: 17, top: 10),
-            child: TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search',
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+    
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
@@ -129,19 +101,20 @@ class HomeScreen extends StatelessWidget {
                                  );
                             },
                             child: Container(
-                              width: 320,
+                              width: 340,
                               height: 200,
                               decoration: BoxDecoration(
                                 border: Border.all(width: 0),
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color.fromARGB(255, 223, 223, 223),
+                                color: Color.fromARGB(255, 86, 120, 92).withOpacity(0.3),
+                                //  Color.fromARGB(255, 223, 223, 223),
                               ),
                               margin: const EdgeInsets.all(5),
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    height: 170,
+                                    height: 175,
                                     width: 320,
                                     decoration: const BoxDecoration(
                                       borderRadius: BorderRadius.only(

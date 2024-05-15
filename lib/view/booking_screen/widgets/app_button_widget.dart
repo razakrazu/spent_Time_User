@@ -5,11 +5,12 @@ class AppButtonWidget extends StatelessWidget {
 
 
 const AppButtonWidget({
-    super.key,required this.buttontext, required this.ontap, required this.btnHeight, required this.btnWidth,
+    super.key,required this.buttontext, required this.ontap, required this.btnHeight, required this.btnWidth, 
   });
   final double  btnHeight;
   final double btnWidth;
   final String  buttontext;
+
   final  VoidCallback ontap;
 
   @override
@@ -19,9 +20,11 @@ const AppButtonWidget({
         height: btnHeight ,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(width: 1)),
+            color:Color.fromARGB(255, 1, 57, 12).withOpacity(0.6) ,
+         ),
+            
         child: TextButton(
             onPressed:ontap ,
-            child:  Text(buttontext)));
+            child:  Text(buttontext,style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),)));
   }
 }

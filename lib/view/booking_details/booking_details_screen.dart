@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_details.dart';
 import 'package:speat_time_user/controller/user_datas.dart';
+import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class BookingDetailsScreen extends StatelessWidget {
@@ -18,6 +19,12 @@ class BookingDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+             appBar: AppBar(
+     backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+        title:const MyTextWidgets(title: 'Bookings', fontsize: 27, fontwidget: FontWeight.w900, fontcolor: whiteColor) ,
+        centerTitle: true,
+        leading: IconButton(onPressed: (){}, icon:Icon( Icons.arrow_back,color: Colors.white,),),
+  ),
       body: StreamBuilder(
         stream: getDataController.bookingStream.value,
         builder: (context, snapshot) {

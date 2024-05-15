@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_room.dart';
+import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/model/booking_room.dart';
 import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
 import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
+import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 import 'package:speat_time_user/view/widgets/popup_massages.dart';
 
 class BookingScreen extends StatelessWidget {
@@ -31,14 +33,14 @@ class BookingScreen extends StatelessWidget {
 AllSnacbarMassages massages=AllSnacbarMassages();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Booking Room',
-          style: TextStyle(color: Colors.white),
-        ),
+         appBar: AppBar(
+     backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+        title:const MyTextWidgets(title: 'Room Booking', fontsize: 25, fontwidget: FontWeight.w800, fontcolor: whiteColor) ,
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
-      ),
+        leading: IconButton(onPressed: (){
+          Get.back();
+        }, icon:Icon( Icons.arrow_back,color: Colors.white,),),
+  ),
       body: SingleChildScrollView(
         child: Container(
             height: 900,
@@ -141,7 +143,7 @@ AllSnacbarMassages massages=AllSnacbarMassages();
                           Get.back();
                         },
                         btnHeight: 57,
-                        btnWidth: 160,
+                        btnWidth: 160, 
                       ),
                       width30,
                       AppButtonWidget(
