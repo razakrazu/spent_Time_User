@@ -3,6 +3,7 @@ import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/searching/search_screen.dart';
+import 'package:speat_time_user/view/settings/settings_screen.dart';
 
 
 
@@ -19,14 +20,11 @@ class _BottomNavigationBarExampleState
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static  List<Widget> _widgetOptions = <Widget>[
+  static  List<Widget> _widgetOptions = <Widget>   [
    HomeScreen(),
-    SearchingScreen(),
+ const   SearchingScreen(),
     BookingDetailsScreen(),
-     Text(
-      'Index 4: Settings',
-      style: optionStyle,
-    ),
+  const  SettingsScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -49,32 +47,32 @@ class _BottomNavigationBarExampleState
           BottomNavigationBarItem(
             icon: Icon(Icons.home,size: 25,),
             label: 'home',
-              backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+              backgroundColor:  Color.fromARGB(255, 86, 120, 92),
           ),
              BottomNavigationBarItem(
             icon: Icon(Icons.search_outlined,size: 25,),
             label: 'search',
             // backgroundColor: Color.fromARGB(255, 156, 156, 156),
-                    backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+                    backgroundColor:  Color.fromARGB(255, 86, 120, 92),
 
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.card_travel_rounded,size: 25,),
             label: 'booking',
-        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+        backgroundColor:  Color.fromARGB(255, 86, 120, 92),
           ),
        
           BottomNavigationBarItem(
             icon: Icon(Icons.person_pin,size: 30,),
             label: 'Profile',
-                 backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+                 backgroundColor:  Color.fromARGB(255, 86, 120, 92),
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor:const Color.fromARGB(255, 255, 255, 255),
         // backgroundColor: const Color.fromARGB(255, 86, 120, 92),
         onTap: _onItemTapped,
-        unselectedIconTheme: IconThemeData(color: Color.fromARGB(255, 222, 222, 222)),
+        unselectedIconTheme:const IconThemeData(color: Color.fromARGB(255, 222, 222, 222)),
       ),
     );
   }
