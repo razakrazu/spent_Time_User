@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
+import 'package:speat_time_user/view/settings/widgets/button_widget.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -16,62 +17,28 @@ class SettingsScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(onPressed: (){
           Get.back();
-        }, icon:Icon( Icons.arrow_back,color: Colors.white,),),
+        }, icon:const Icon( Icons.arrow_back,color: Colors.white,),),
   ),
       body: 
     SafeArea(child: Container(
       
      
-      child: Column(
+      child: const Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 10,right:11, top: 30 ),
-            child: Container(
-              height: 70,
-                 decoration: BoxDecoration(
-                
-            borderRadius: BorderRadius.circular(15),
-                
-            color: const Color.fromARGB(255, 15, 15, 15).withOpacity(0.2)
-                
-                  ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15,right:10,  ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Row(
-                    children: [
-                Container(
-                    
-                      height: 45,
-                    
-                      width: 42,
-                    
-                      decoration: BoxDecoration(
-                    
-                borderRadius: BorderRadius.circular(7),
-                    
-                color: Color.fromARGB(255, 0, 182, 91)
-                    
-                      ),
-                    
-                      child:  Icon(Icons.person),
-                    
-                    
-                    
-                    ),
-                    width15,
-                    MyTextWidgets(title: 'Profile', fontsize: 18, fontwidget: FontWeight.w600, fontcolor: blackColor),
-                  
-                    ],
-                  ),
-                  Icon(Icons.arrow_forward_ios)
-                ],),
-              ),
-            ),
-          )
+          height20,
+          SettingsButtonWidget(icon: Icon(Icons.person), btnText: 'My Account', iconBackGroundColor: Color.fromARGB(255, 70, 219, 75),),
+          SettingsButtonWidget(icon: Icon(Icons.wallet_sharp), btnText: 'Payment Mothods',iconBackGroundColor: Color.fromARGB(255, 67, 85, 229),),
+          SettingsButtonWidget(icon: Icon(Icons.settings), btnText: 'Settings',iconBackGroundColor: Color.fromARGB(255, 219, 233, 67),),
+          SettingsButtonWidget(icon: Icon(Icons.privacy_tip_outlined), btnText: 'Privacy Policey ',iconBackGroundColor:  Color.fromARGB(255, 226, 61, 218),),
+          
+          SettingsButtonWidget(icon: Icon(Icons.access_time_sharp), btnText: 'Help Center',iconBackGroundColor: Color.fromARGB(255, 143, 92, 238),),
+          SettingsButtonWidget(icon: Icon(Icons.logout_outlined), btnText: 'Logout',iconBackGroundColor: Color.fromARGB(255, 235, 71, 59),)
+
+
+
+
         ],
       ),)),);
   }
 }
+
