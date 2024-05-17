@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class MyTextFormFieldWidget extends StatelessWidget {
   const MyTextFormFieldWidget({
     super.key,
-    this.hinttext,
-    this.Icon,
-    required this.controller,
+   required this.hinttext,
+    required this.icon,
+    this.controller,
   });
   final controller;
-  final  hinttext;
-  final  Icon;
+  final String hinttext;
+  final  icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,9 +30,9 @@ class MyTextFormFieldWidget extends StatelessWidget {
             fontSize: 15,  
             color: Color.fromARGB(255, 90, 90, 90),
           ),
-          prefixIcon: Icon,
+          prefixIcon: icon,
         ),
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
       ),
     );
   }

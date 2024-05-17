@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/view/booking_details/booking_details_screen.dart';
 import 'package:speat_time_user/view/home_screen/home_screen.dart';
 import 'package:speat_time_user/view/searching/search_screen.dart';
@@ -63,9 +62,10 @@ class _BottomNavigationBarExampleState
           ),
        
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_pin,size: 30,),
+            icon: Icon(Icons.person,size: 30,),
             label: 'Profile',
-                 backgroundColor:  Color.fromARGB(255, 86, 120, 92),
+           backgroundColor:  Color.fromARGB(255, 86, 120, 92),
+                 
           ),
         ],
         currentIndex: _selectedIndex,

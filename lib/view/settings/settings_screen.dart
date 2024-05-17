@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
+import 'package:speat_time_user/view/settings/profile_screen.dart';
 import 'package:speat_time_user/view/settings/widgets/button_widget.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -23,16 +24,17 @@ class SettingsScreen extends StatelessWidget {
     SafeArea(child: Container(
       
      
-      child: const Column(
+      child:  Column(
         children: [
           height20,
-          SettingsButtonWidget(icon: Icon(Icons.person), btnText: 'My Account', iconBackGroundColor: Color.fromARGB(255, 70, 219, 75),),
-          SettingsButtonWidget(icon: Icon(Icons.wallet_sharp), btnText: 'Payment Mothods',iconBackGroundColor: Color.fromARGB(255, 67, 85, 229),),
-          SettingsButtonWidget(icon: Icon(Icons.settings), btnText: 'Settings',iconBackGroundColor: Color.fromARGB(255, 219, 233, 67),),
-          SettingsButtonWidget(icon: Icon(Icons.privacy_tip_outlined), btnText: 'Privacy Policey ',iconBackGroundColor:  Color.fromARGB(255, 226, 61, 218),),
-          
-          SettingsButtonWidget(icon: Icon(Icons.access_time_sharp), btnText: 'Help Center',iconBackGroundColor: Color.fromARGB(255, 143, 92, 238),),
-          SettingsButtonWidget(icon: Icon(Icons.logout_outlined), btnText: 'Logout',iconBackGroundColor: Color.fromARGB(255, 235, 71, 59),)
+          SettingsButtonWidget(icon: Icon(Icons.person), btnText: 'My Account', iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245),controller: (){
+            Get.to(ProfileScreen());
+          },),
+          SettingsButtonWidget(icon: Icon(Icons.wallet_sharp), btnText: 'Payment Mothods',iconBackGroundColor: Color.fromARGB(255, 245, 245, 245),),
+          SettingsButtonWidget(icon: Icon(Icons.settings), btnText: 'Settings',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+          SettingsButtonWidget(icon: Icon(Icons.privacy_tip_outlined), btnText: 'Privacy Policey ',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+          SettingsButtonWidget(icon: Icon(Icons.access_time_sharp), btnText: 'Help Center',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+          SettingsButtonWidget(icon: Icon(Icons.logout_outlined), btnText: 'Logout',iconBackGroundColor: Color.fromARGB(255, 252, 131, 122),)
 
 
 
