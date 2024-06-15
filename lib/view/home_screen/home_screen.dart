@@ -25,24 +25,32 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-     backgroundColor: const Color.fromARGB(255, 86, 120, 92),
-        title:const MyTextWidgets(title: 'HOME', fontsize: 24, fontwidget: FontWeight.w700, fontcolor: whiteColor) ,
+        backgroundColor: const Color.fromARGB(255, 86, 120, 92),
+        title: const MyTextWidgets(
+            title: 'HOME',
+            fontsize: 24,
+            fontwidget: FontWeight.w700,
+            fontcolor: whiteColor),
         centerTitle: true,
-        leading:IconButton(
-          onPressed: () {
+        leading: IconButton(
+            onPressed: () {
               signupController.signOut();
-        }, icon:const Icon(Icons.menu,color: Colors.white,)) ,
-        actions:const [
+            },
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+            )),
+        actions: const [
           Padding(
-            padding:  EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(),
           ),
-        ],),
+        ],
+      ),
       body: SafeArea(
           child: ListView(
         children: [
-   height15,
-    
+          height15,
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
@@ -69,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                 }),
           ),
           Container(
-              height: 260,
+              height: 570,
               width: 200,
               child: StreamBuilder(
                   stream: userController.getAccepted(),
@@ -79,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                       return CircularProgressIndicator();
                     }
                     return ListView.builder(
-                        scrollDirection: Axis.horizontal,
+                        scrollDirection: Axis.vertical,
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
                           DocumentSnapshot document =
@@ -90,362 +98,92 @@ class HomeScreen extends StatelessWidget {
 
                           return GestureDetector(
                             onTap: () {
-                          
-
                               Get.to(
-                                  RoomDetailScreen(
-                                    id: id,
-                                    data: data,
-                                     bookingId: '',
-                                  ),
-                                 );
+                                RoomDetailScreen(
+                                  id: id,
+                                  data: data,
+                                  bookingId: '',
+                                ),
+                              );
                             },
-                            child: Container(
-                              width: 340,
-                              height: 200,
-                              decoration: BoxDecoration(
-                                border: Border.all(width: 0),
-                                borderRadius: BorderRadius.circular(12),
-                                color: Color.fromARGB(255, 86, 120, 92).withOpacity(0.3),
-                                //  Color.fromARGB(255, 223, 223, 223),
-                              ),
-                              margin: const EdgeInsets.all(5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    height: 175,
-                                    width: 320,
-                                    decoration: const BoxDecoration(
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(13),
-                                          topRight: Radius.circular(13)),
-                                    ),
-                                    child: CachedNetworkImage(
-                                      imageUrl:
-                                          (data['listImages'] as List<dynamic>)
-                                                  .isNotEmpty
-                                              ? data['listImages'][0]
-                                              : '',
-                                      // Other parameters...
-                                      height: 100,
-                                      width: 100,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Name :${data['propertyname'] ?? ''}',
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                width: 340,
+                                height: 298,
+                                decoration: BoxDecoration(
+                                  border: Border.all(width: 0),
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Color.fromARGB(255, 86, 120, 92)
+                                      .withOpacity(0.3),
+                                  //  Color.fromARGB(255, 223, 223, 223),
+                                ),
+                                child: Column(
+                                                         
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: SizedBox(
+                                        height: 190,
+                                        width: 340,
+                                                                      
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              (data['listImages'] as List<dynamic>)
+                                                      .isNotEmpty
+                                                  ? data['listImages'][0]
+                                                  : '',                                
+                                          fit: BoxFit.cover,
                                         ),
-                                        IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                                Icons.favorite_border))
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 10, right: 10),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Location :${data['city'] ?? ''}',
-                                          style: const TextStyle(
+                                   Padding(
+                                     padding: const EdgeInsets.only(left: 20,right: 20,bottom: 3),
+                                     child: Column(children: [
+                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Name :${data['propertyname'] ?? ''}',
+                                            style: const TextStyle(
                                               fontSize: 16,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                        Text(
-                                          'Night/${data['propertyPrice'] ?? ''}'
-                                          '',
-                                          style: const TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                  Icons.favorite_border))
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            'Location :${data['city'] ?? ''}',
+                                            style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          Text(
+                                            'Night/${data['propertyPrice'] ?? ''}'
+                                            '',
+                                            style: const TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ],
+                                      ),
+                                     ],),
+                                   )
+                                  ],
+                                ),
                               ),
                             ),
                           );
                         });
-                  })),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Populer Rooms',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-          ),
-          Container(
-              height: 220,
-              width: 220,
-              child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: 180,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 0),
-                        borderRadius: BorderRadius.circular(12),
-                        color: Color.fromARGB(255, 223, 223, 223),
-                      ),
-                      margin: const EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 140,
-                            width: 320,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'lib/assets/sdkdjsa.jpg',
-                                ),
-                                fit: BoxFit.fill,
-                              ),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(13),
-                                  topRight: Radius.circular(13)),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Rose villa',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(Icons.favorite_border)),
-                              ],
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Rose villa',
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  'Night/3000',
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  })),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Populer Rooms',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                  height: 220,
-                  width: 220,
-                  child: ListView.builder(
-                      itemCount: 10,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: 180,
-                          decoration: BoxDecoration(
-                            border: Border.all(width: 0),
-                            borderRadius: BorderRadius.circular(12),
-                            color:const Color.fromARGB(255, 223, 223, 223),
-                          ),
-                          margin: const EdgeInsets.all(5),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 140,
-                                width: 320,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                      'lib/assets/sdkdjsa.jpg',
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(13),
-                                      topRight: Radius.circular(13)),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      'Rose villa',
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    IconButton(
-                                        onPressed: () {},
-                                        icon:const Icon(Icons.favorite_border)),
-                                  ],
-                                ),
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.only(left: 10, right: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Rose villa',
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Text(
-                                      'Night/3000',
-                                      style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w400),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        );
-                      })),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Populer Rooms',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
-            ),
-          ),
-          Container(
-              height: 220,
-              width: 220,
-              child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: 180,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 0),
-                        borderRadius: BorderRadius.circular(12),
-                        color:const Color.fromARGB(255, 223, 223, 223),
-                      ),
-                      margin: const EdgeInsets.all(5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            height: 140,
-                            width: 320,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'lib/assets/sdkdjsa.jpg',
-                                ),
-                                fit: BoxFit.fill,
-                              ),
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(13),
-                                  topRight: Radius.circular(13)),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Rose villa',
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon:const Icon(Icons.favorite_border)),
-                              ],
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Rose villa',
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                                Text(
-                                  'Night/3000',
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
                   })),
         ],
       )),

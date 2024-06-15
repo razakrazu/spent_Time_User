@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyTextFormFieldWidget extends StatelessWidget {
   const MyTextFormFieldWidget({
     super.key,
    required this.hinttext,
-    required this.icon,
+   required  this.icon,
     this.controller,
   });
   final controller;
   final String hinttext;
-  final  icon;
+  final IconData  icon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,8 +29,9 @@ class MyTextFormFieldWidget extends StatelessWidget {
             fontSize: 15,  
             color: Color.fromARGB(255, 90, 90, 90),
           ),
-          prefixIcon: icon,
+          prefixIcon: Icon(icon),
         ),
+
         style: const TextStyle(color: Colors.black),
       ),
     );

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -8,7 +6,7 @@ import 'package:speat_time_user/controller/booking_room.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/model/booking_room.dart';
-import 'package:speat_time_user/view/booking_screen/mytext_field_widget.dart';
+import 'package:speat_time_user/view/booking_screen/widgets/mytext_field_widget.dart';
 import 'package:speat_time_user/view/booking_screen/payment_screen.dart';
 import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';

@@ -5,7 +5,7 @@ import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/core/constants.dart';
 import 'package:speat_time_user/view/booking_screen/booking_screen.dart';
-import 'package:speat_time_user/view/booking_screen/widgets/app_button_widget.dart';
+import 'package:speat_time_user/view/booking_screen/widgets/divider_line.dart';
 import 'package:speat_time_user/view/booking_screen/widgets/nearby_items_widgets.dart';
 import 'package:speat_time_user/view/widgets/button.dart';
 import 'package:speat_time_user/view/widgets/fasilitices_widgets.dart';
@@ -56,16 +56,7 @@ class RoomDetailScreen extends StatelessWidget {
                                     
                                     height: 300,
                                     
-                                    // decoration: const BoxDecoration(
-                                    //     // image: DecorationImage(
-                                    //     //   image: AssetImage(
-                                    //     //     'lib/assets/sdkdjsa.jpg',
-                                    //     //   ),
-
-                                    //     //   // fit: BoxFit.fill,
-                                    //     // ),
-                                    //     ),
-                                    child: CachedNetworkImage(
+                                                             child: CachedNetworkImage(
                                     
                                       imageUrl: imageUrl,
                                       placeholder: (context, url) =>
@@ -182,7 +173,22 @@ class RoomDetailScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                 
+                  const Padding(
+                      padding: EdgeInsets.only(left: 10,top: 10),
+                      child: MyTextWidgets(
+                        title: 'About Room',
+                        fontwidget: FontWeight.w800,
+                        fontsize: 22,
+                        fontcolor: Colors.black,
+                      ),                     
+                    ),
+         const           DivederLine(right: 245.0,left:10.0 ,),
+                      MyTextWidgets(
+                        title: 'ected that you might be using a screen reader and has disabled PSReadLine for compatibility purposes. If you want to re-enable it, run Import-Module PSReadLin',
+                        fontwidget: FontWeight.w500,
+                        fontsize: 15,
+                        fontcolor: Colors.black.withOpacity(0.4),
+                      ),
                     const Padding(
                       padding: EdgeInsets.only(left: 10,top: 10),
                       child: MyTextWidgets(
@@ -192,9 +198,9 @@ class RoomDetailScreen extends StatelessWidget {
                         fontcolor: Colors.black,
                       ),
                     ),
-                       DividerLine(),
+            const           DivederLine(right: 125.0,left:10.0 ,),
                     Padding(
-                      padding: const EdgeInsets.only(left: 20 ,right: 20,top: 20),
+                      padding: const EdgeInsets.only(left: 20 ,right: 20,top: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -206,7 +212,7 @@ class RoomDetailScreen extends StatelessWidget {
                                 RoomFutureIconWidgets(
                                   futureicon: Icons.fastfood,
                                   futuretext:
-                                      ' ${data['food'] == true ? 'Food' : 'Not here'}   ',
+                                      ' ${data['food'] == true ? 'Food' : 'Not here'} ',
                                 ),
                                RoomFutureIconWidgets(
                                     futureicon: Icons.meeting_room_outlined,
@@ -238,20 +244,21 @@ class RoomDetailScreen extends StatelessWidget {
                                   futuretext:
                                       '${data['wifi'] == true ? 'Wifi' : 'Not here'}',
                                 ),
-                                RoomFutureIconWidgets(
-                                  futureicon: Icons.local_parking,
-                                  futuretext:
-                                      '${data['parking'] == true ? 'Parking' : 'Not here'}',
-                                ),
-                                RoomFutureIconWidgets(
+                                   RoomFutureIconWidgets(
                                   futureicon: Icons.flash_on_outlined,
                                   futuretext:
                                       '${data['powerBackup'] == true ? 'Power Backup' : 'Not here'}',
                                 ),
                                 RoomFutureIconWidgets(
+                                  futureicon: Icons.local_parking,
+                                  futuretext:
+                                      '${data['parking'] == true ? 'Parking' : 'Not here'}',
+                                ),
+                             
+                                RoomFutureIconWidgets(
                                   futureicon: Icons.pool,
                                   futuretext:
-                                      '${data['swimmingpool'] == true ? 'pool' : 'Not here'}',
+                                     '${data['swimmingpool'] == true ? 'pool' : 'Not here'}',
                                 ),
                               ],
                             ),
@@ -354,22 +361,7 @@ class RoomDetailScreen extends StatelessWidget {
               ),
             ),
             
-                  //  Padding(
-                  //           padding: const EdgeInsets.only(top: 750,left: 40),
-                  //           child: AppButtonWidget( buttontext: 'Book & Pay Now',ontap:() async {
-                  //                          final Map<String, dynamic> userData =
-                  //                                 await auth.getuserdata();
-                  //                             Get.to(
-                  //                               BookingScreen(
-                  //                                 userData: userData,
-                  //                                 userId: id,
-                  //                                 bookingId: bookingId,
-                  //                                 propertyImages: data['listImages'],
-                  //                                 propertyname: data['propertyname'],
-                  //                               ),
-                  //                             );
-                  //                           }, btnHeight: 50, btnWidth: 300, ),
-                  //         ),
+               
                           Padding(
                             padding: const EdgeInsets.only(top: 750,left: 20,right: 20),
                             child: SingupButton(
@@ -403,15 +395,7 @@ class RoomDetailScreen extends StatelessWidget {
       ),
     );
   }
-
-  Padding DividerLine() {
-    return const Padding(
-            padding: EdgeInsets.only(right: 125,left: 10, ),
-            child: Divider(
-              color: Color.fromARGB(255, 134, 132, 132),
-              thickness: 3,
-            ),
-          );
-  }
 }
+
+
 

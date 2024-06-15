@@ -30,7 +30,6 @@ class RoomsBookingDatas extends GetxController{
         FirebaseFirestore.instance.collection('users')
         .doc(userId)
         .collection('user_bookings');
-           log('${userId}');
 
     final Stream<QuerySnapshot<Object?>> resturentStream =
         resturentCollection.snapshots();

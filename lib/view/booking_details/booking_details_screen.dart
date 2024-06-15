@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:speat_time_user/controller/booking_details.dart';
-import 'package:speat_time_user/controller/user_datas.dart';
 import 'package:speat_time_user/core/color.dart';
 import 'package:speat_time_user/view/widgets/my_text_widget.dart';
 
@@ -13,7 +12,6 @@ class BookingDetailsScreen extends StatelessWidget {
     super.key,
   });
   RoomsBookingDatas getDataController = Get.put(RoomsBookingDatas());
-  OwnerDatas RoomDataController = Get.put(OwnerDatas());
   
 
   @override
@@ -53,76 +51,74 @@ class BookingDetailsScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 140,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: const Color.fromARGB(255, 212, 212, 212),
-                        ),
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                // decoration: BoxDecoration(
-                                //     borderRadius: BorderRadius.circular(10),
-                                //     image: DecorationImage(
-                                //         image: AssetImage(
-                                //             bookingData['propertyImages']),
-                                //         fit: BoxFit.cover)),
-                                child: CachedNetworkImage(
-                                  imageUrl: (bookingData['propertyImages']
-                                              as List<dynamic>)
-                                          .isNotEmpty
-                                      ? bookingData['propertyImages'][0]
-                                      : '',
-                                  // Other parameters...
-                                  height: 110,
-                                  width: 130,
-                                  fit: BoxFit.cover,
+                      child: GestureDetector(
+                        onTap: (){},
+                        child: Container(
+                          height: 140,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color.fromARGB(255, 212, 212, 212),
+                          ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+               
+                                  child: CachedNetworkImage(
+                                    imageUrl: (bookingData['propertyImages']
+                                                as List<dynamic>)
+                                            .isNotEmpty
+                                        ? bookingData['propertyImages'][0]
+                                        : '',
+                                    // Other parameters...
+                                    height: 110,
+                                    width: 130,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20, top: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  MyTextWidgets(
-                                      title: 'Name: $roomName ',
-                                      fontsize: 15,
-                                      fontwidget: FontWeight.w600,
-                                      fontcolor: const Color.fromARGB(
-                                          255, 47, 47, 47)),
-                                  MyTextWidgets(
-                                      title: 'Room: $roomCount',
-                                      fontsize: 15,
-                                      fontwidget: FontWeight.w600,
-                                      fontcolor: const Color.fromARGB(
-                                          255, 57, 57, 57)),
-                                  MyTextWidgets(
-                                      title: 'Guest: $guestCount',
-                                      fontsize: 15,
-                                      fontwidget: FontWeight.w600,
-                                      fontcolor: const Color.fromARGB(
-                                          255, 48, 48, 48)),
-                                  MyTextWidgets(
-                                      title: 'CheckIn: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkIn))}',
-                                      fontsize: 15,
-                                      fontwidget: FontWeight.w600,
-                                      fontcolor: const Color.fromARGB(
-                                          255, 58, 58, 58)),
-                                  MyTextWidgets(
-                                      title: 'CheckOut: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkOut))}  ',
-                                      fontsize: 15,
-                                      fontwidget: FontWeight.w600,
-                                      fontcolor: const Color.fromARGB(
-                                          255, 54, 54, 54)),
-                                ],
-                              ),
-                            )
-                          ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20, top: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MyTextWidgets(
+                                        title: 'Name: $roomName ',
+                                        fontsize: 15,
+                                        fontwidget: FontWeight.w600,
+                                        fontcolor: const Color.fromARGB(
+                                            255, 47, 47, 47)),
+                                    MyTextWidgets(
+                                        title: 'Room: $roomCount',
+                                        fontsize: 15,
+                                        fontwidget: FontWeight.w600,
+                                        fontcolor: const Color.fromARGB(
+                                            255, 57, 57, 57)),
+                                    MyTextWidgets(
+                                        title: 'Guest: $guestCount',
+                                        fontsize: 15,
+                                        fontwidget: FontWeight.w600,
+                                        fontcolor: const Color.fromARGB(
+                                            255, 48, 48, 48)),
+                                    MyTextWidgets(
+                                        title: 'CheckIn: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkIn))}',
+                                        fontsize: 15,
+                                        fontwidget: FontWeight.w600,
+                                        fontcolor: const Color.fromARGB(
+                                            255, 58, 58, 58)),
+                                    MyTextWidgets(
+                                        title: 'CheckOut: ${DateFormat('dd-MM-yyyy').format(DateTime.parse(checkOut))}  ',
+                                        fontsize: 15,
+                                        fontwidget: FontWeight.w600,
+                                        fontcolor: const Color.fromARGB(
+                                            255, 54, 54, 54)),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

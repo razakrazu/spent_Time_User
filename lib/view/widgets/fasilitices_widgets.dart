@@ -12,10 +12,20 @@ class RoomFutureIconWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Icon(
-          futureicon,
-          size: 35,
-          color: const Color.fromARGB(255, 75, 75, 75),
+        Container(
+          
+        height: 50,
+        width: 50,
+        decoration: BoxDecoration(
+          
+          color: const Color.fromARGB(255, 151, 150, 150).withOpacity(0.3),
+          borderRadius: BorderRadius.circular(7)
+        ),
+          child: Icon(
+            futureicon,
+            size: 35,
+            color: const Color.fromARGB(255, 75, 75, 75),
+          ),
         ),
         Text(
           futuretext,

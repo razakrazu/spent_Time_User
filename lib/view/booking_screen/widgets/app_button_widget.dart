@@ -20,11 +20,11 @@ const AppButtonWidget({
         height: btnHeight ,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color:Color.fromARGB(255, 1, 57, 12).withOpacity(0.6) ,
+            color: Color.fromARGB(255, 99, 181, 115) ,
          ),
             
         child: TextButton(
             onPressed:ontap ,
-            child:  Text(buttontext,style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),)));
+            child:  Text(buttontext,style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.w900,fontSize: 19),)));
   }
 }

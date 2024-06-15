@@ -27,13 +27,14 @@ class SettingsScreen extends StatelessWidget {
       child:  Column(
         children: [
           height20,
-          SettingsButtonWidget(icon: Icon(Icons.person), btnText: 'My Account', iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245),controller: (){
+          SettingsButtonWidget(icon: Icon(Icons.person), btnText: 'My Account', iconBackGroundColor: const Color.fromARGB(255, 245, 245, 245),controller: (){
             Get.to(ProfileScreen());
           },),
-          SettingsButtonWidget(icon: Icon(Icons.wallet_sharp), btnText: 'Payment Mothods',iconBackGroundColor: Color.fromARGB(255, 245, 245, 245),),
-          SettingsButtonWidget(icon: Icon(Icons.settings), btnText: 'Settings',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+          SettingsButtonWidget(icon: Icon(Icons.wallet_sharp), btnText: 'About',iconBackGroundColor: Color.fromARGB(255, 245, 245, 245),),
           SettingsButtonWidget(icon: Icon(Icons.privacy_tip_outlined), btnText: 'Privacy Policey ',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
           SettingsButtonWidget(icon: Icon(Icons.access_time_sharp), btnText: 'Help Center',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+                    SettingsButtonWidget(icon: Icon(Icons.share), btnText: 'Share',iconBackGroundColor:  Color.fromARGB(255, 245, 245, 245)),
+
           SettingsButtonWidget(icon: Icon(Icons.logout_outlined), btnText: 'Logout',iconBackGroundColor: Color.fromARGB(255, 252, 131, 122),)
 
 

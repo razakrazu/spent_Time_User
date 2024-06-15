@@ -61,6 +61,7 @@ dependencies:
   icons_plus: ^5.0.0
   intl: ^0.18.1
   simple_icons: ^10.1.3
+  circular_reveal_animation: ^2.0.1
  
   
 
@@ -96,6 +97,7 @@ flutter:
     - lib\assets\djffjdjda.jpg
     - lib\assets\roberto-nickson-so3wgJLwDxo-unsplash.jpg
     - lib\assets\r-architecture-JvQ0Q5IkeMM-unsplash.jpg
+    - lib\assets\unperson.jpg
     
   #   - images/a_dot_ham.jpeg
 

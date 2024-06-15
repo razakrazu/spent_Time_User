@@ -20,16 +20,16 @@ class AuthenticationRepositry extends GetxController{
 
 setInitialScreen(User? user){
   user == null
-  ?Get.off(()=>WelcomeScreen())
-  :Get.off(()=>BottomNavigationBarExample());
+  ?Get.off(()=> const WelcomeScreen())
+  :Get.off(()=> const BottomNavigationBarExample());
 
 }
 Future<void>creatUserWithEmailAndPassword(String email ,String password )async{
   try{
     await auth.createUserWithEmailAndPassword(email: email, password: password);
     firebaseUser.value!= null
-    ? Get.offAll(BottomNavigationBarExample())
-    : Get.offAll(WelcomeScreen());
+    ? Get.offAll(const BottomNavigationBarExample())
+    : Get.offAll(const WelcomeScreen());
 
 
   } on FirebaseAuthException catch(e){
